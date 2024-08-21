@@ -3,12 +3,13 @@
 package components
 
 import (
-	"github.com/my-company/livepeerai/internal/utils"
+	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
 type Audio struct {
 	FileName string `multipartForm:"name=audio"`
-	Content  []byte `multipartForm:"content"`
+	// This field accepts []byte data or io.Reader implementations, such as *os.File.
+	Content any `multipartForm:"content"`
 }
 
 func (o *Audio) GetFileName() string {
@@ -18,9 +19,9 @@ func (o *Audio) GetFileName() string {
 	return o.FileName
 }
 
-func (o *Audio) GetContent() []byte {
+func (o *Audio) GetContent() any {
 	if o == nil {
-		return []byte{}
+		return nil
 	}
 	return o.Content
 }

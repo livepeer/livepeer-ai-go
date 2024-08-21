@@ -4,14 +4,14 @@ package main
 
 import (
 	"context"
-	"github.com/my-company/livepeerai"
-	"github.com/my-company/livepeerai/models/components"
+	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+	"github.com/livepeer/livepeer-ai-go/models/components"
 	"log"
 )
 
 func main() {
-	s := livepeerai.New(
-		livepeerai.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	s := livepeeraigo.New(
+		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{
 		Prompt: "<value>",

@@ -7,7 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/cenkalti/backoff/v4"
-	"github.com/my-company/livepeerai/retry"
+	"github.com/livepeer/livepeer-ai-go/retry"
 	"net/http"
 	"net/url"
 	"strconv"

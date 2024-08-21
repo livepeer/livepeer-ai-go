@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/my-company/livepeerai/internal/utils"
+	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
 type TextToImageParams struct {

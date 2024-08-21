@@ -4,8 +4,8 @@ package operations
 
 import (
 	"errors"
-	"github.com/my-company/livepeerai/internal/utils"
-	"github.com/my-company/livepeerai/retry"
+	"github.com/livepeer/livepeer-ai-go/internal/utils"
+	"github.com/livepeer/livepeer-ai-go/retry"
 	"time"
 )
 

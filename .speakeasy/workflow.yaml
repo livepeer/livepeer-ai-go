@@ -1,4 +1,5 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     livepeerai-OAS:
         inputs:
@@ -6,6 +7,6 @@ sources:
         registry:
             location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/livepeerai-oas
 targets:
-    livepeerai:
+    livepeerai-go:
         target: go
         source: livepeerai-OAS

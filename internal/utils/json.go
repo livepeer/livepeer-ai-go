@@ -13,7 +13,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/my-company/livepeerai/types"
+	"github.com/livepeer/livepeer-ai-go/types"
 
 	"github.com/ericlagergren/decimal"
 )

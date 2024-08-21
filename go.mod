@@ -1,4 +1,4 @@
-module github.com/my-company/livepeerai
+module github.com/livepeer/livepeer-ai-go
 
 go 1.20
 
