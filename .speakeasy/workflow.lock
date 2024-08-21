@@ -2,10 +2,11 @@ speakeasyVersion: 1.377.0
 sources:
     livepeerai-OAS:
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:d5d5448674c5945b56ea82b32a01c9bb5bfa977ce0db559f609135346f028189
-        sourceBlobDigest: sha256:48b0747b8e9a3740e70354e85817a677ea764896e39a5c31ec3060fd570e555f
+        sourceRevisionDigest: sha256:f646e5d47ef02204d486dc5bf6ea48a875ebb2a6558557bb2026af2a9af4a812
+        sourceBlobDigest: sha256:88b77186fc98fe193435d3069ab2e85fe4d404e802e4e23761979e984649ff70
         tags:
             - latest
+            - main
 targets:
     livepeerai:
         source: livepeerai-OAS
@@ -16,9 +17,11 @@ targets:
     livepeerai-go:
         source: livepeerai-OAS
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:d5d5448674c5945b56ea82b32a01c9bb5bfa977ce0db559f609135346f028189
-        sourceBlobDigest: sha256:48b0747b8e9a3740e70354e85817a677ea764896e39a5c31ec3060fd570e555f
-        outLocation: /home/ricks/development/livepeer/ai/livepeer-ai-go
+        sourceRevisionDigest: sha256:f646e5d47ef02204d486dc5bf6ea48a875ebb2a6558557bb2026af2a9af4a812
+        sourceBlobDigest: sha256:88b77186fc98fe193435d3069ab2e85fe4d404e802e4e23761979e984649ff70
+        codeSamplesNamespace: code-samples-go-livepeerai-go
+        codeSamplesRevisionDigest: sha256:7034b6c4a6581852d0bd476d318445c3814803f206a136786e24e2c260890052
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -29,6 +32,10 @@ workflow:
             registry:
                 location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/livepeerai-oas
     targets:
-        livepeerai:
+        livepeerai-go:
             target: go
             source: livepeerai-OAS
+            codeSamples:
+                output: codeSamples.yaml
+                registry:
+                    location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/code-samples-go-livepeerai-go
