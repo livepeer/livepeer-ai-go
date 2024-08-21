@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: CodeSamples overlay for go target
+  version: 0.0.0
+actions:
+  - target: $["paths"]["/audio-to-text"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "go"
+          "label": "audio_to_text"
+          "source": "package main\n\nimport(\n\tlivepeeraigo \"github.com/livepeer/livepeer-ai-go\"\n\t\"github.com/livepeer/livepeer-ai-go/models/components\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := livepeeraigo.New(\n        livepeeraigo.WithSecurity(\"<YOUR_BEARER_TOKEN_HERE>\"),\n    )\n    request := components.BodyAudioToTextAudioToTextPost{\n        Audio: components.Audio{\n            FileName: \"your_file_here\",\n            Content: os.Open(\"<file_path>\"),\n        },\n    }\n    ctx := context.Background()\n    res, err := s.AudioToText(ctx, request)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.TextResponse != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/text-to-image"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "go"
+          "label": "text_to_image"
+          "source": "package main\n\nimport(\n\tlivepeeraigo \"github.com/livepeer/livepeer-ai-go\"\n\t\"github.com/livepeer/livepeer-ai-go/models/components\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := livepeeraigo.New(\n        livepeeraigo.WithSecurity(\"<YOUR_BEARER_TOKEN_HERE>\"),\n    )\n    request := components.TextToImageParams{\n        Prompt: \"<value>\",\n    }\n    ctx := context.Background()\n    res, err := s.TextToImage(ctx, request)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.ImageResponse != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/image-to-image"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "go"
+          "label": "image_to_image"
+          "source": "package main\n\nimport(\n\tlivepeeraigo \"github.com/livepeer/livepeer-ai-go\"\n\t\"github.com/livepeer/livepeer-ai-go/models/components\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := livepeeraigo.New(\n        livepeeraigo.WithSecurity(\"<YOUR_BEARER_TOKEN_HERE>\"),\n    )\n    request := components.BodyImageToImageImageToImagePost{\n        Prompt: \"<value>\",\n        Image: components.Image{\n            FileName: \"your_file_here\",\n            Content: os.Open(\"<file_path>\"),\n        },\n    }\n    ctx := context.Background()\n    res, err := s.ImageToImage(ctx, request)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.ImageResponse != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/image-to-video"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "go"
+          "label": "image_to_video"
+          "source": "package main\n\nimport(\n\tlivepeeraigo \"github.com/livepeer/livepeer-ai-go\"\n\t\"github.com/livepeer/livepeer-ai-go/models/components\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := livepeeraigo.New(\n        livepeeraigo.WithSecurity(\"<YOUR_BEARER_TOKEN_HERE>\"),\n    )\n    request := components.BodyImageToVideoImageToVideoPost{\n        Image: components.BodyImageToVideoImageToVideoPostImage{\n            FileName: \"your_file_here\",\n            Content: os.Open(\"<file_path>\"),\n        },\n    }\n    ctx := context.Background()\n    res, err := s.ImageToVideo(ctx, request)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.VideoResponse != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/upscale"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "go"
+          "label": "upscale"
+          "source": "package main\n\nimport(\n\tlivepeeraigo \"github.com/livepeer/livepeer-ai-go\"\n\t\"github.com/livepeer/livepeer-ai-go/models/components\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := livepeeraigo.New(\n        livepeeraigo.WithSecurity(\"<YOUR_BEARER_TOKEN_HERE>\"),\n    )\n    request := components.BodyUpscaleUpscalePost{\n        Prompt: \"<value>\",\n        Image: components.BodyUpscaleUpscalePostImage{\n            FileName: \"your_file_here\",\n            Content: os.Open(\"<file_path>\"),\n        },\n    }\n    ctx := context.Background()\n    res, err := s.Upscale(ctx, request)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.ImageResponse != nil {\n        // handle response\n    }\n}"

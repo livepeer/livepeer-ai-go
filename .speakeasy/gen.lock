@@ -5,8 +5,10 @@ management:
   docVersion: v0.1.2
   speakeasyVersion: 1.377.0
   generationVersion: 2.404.0
-  releaseVersion: 0.1.2
-  configChecksum: 9eb1d780a24ea18d23a76ec422c1cb4d
+  releaseVersion: 0.1.3
+  configChecksum: 09d6c9523e1dbc1e50c2961a86c18727
+  repoURL: https://github.com/livepeer/livepeer-ai-go.git
+  installationURL: https://github.com/livepeer/livepeer-ai-go
 features:
   go:
     additionalDependencies: 0.1.0
