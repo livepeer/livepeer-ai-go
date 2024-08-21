@@ -1,0 +1,27 @@
+speakeasyVersion: 1.372.0
+sources:
+    livepeerai-OAS:
+        sourceNamespace: livepeerai-oas
+        sourceRevisionDigest: sha256:352de9d035faa99fb663874d1cb218b371712b95f172339174111f12b91b50ad
+        sourceBlobDigest: sha256:48b0747b8e9a3740e70354e85817a677ea764896e39a5c31ec3060fd570e555f
+        tags:
+            - latest
+targets:
+    livepeerai:
+        source: livepeerai-OAS
+        sourceNamespace: livepeerai-oas
+        sourceRevisionDigest: sha256:352de9d035faa99fb663874d1cb218b371712b95f172339174111f12b91b50ad
+        sourceBlobDigest: sha256:48b0747b8e9a3740e70354e85817a677ea764896e39a5c31ec3060fd570e555f
+        outLocation: /home/ricks/development/livepeer/ai/livepeer-ai-go
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        livepeerai-OAS:
+            inputs:
+                - location: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.json
+            registry:
+                location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/livepeerai-oas
+    targets:
+        livepeerai:
+            target: go
+            source: livepeerai-OAS
