@@ -10,3 +10,7 @@ targets:
     livepeerai-go:
         target: go
         source: livepeerai-OAS
+        codeSamples:
+            output: codeSamples.yaml
+            registry:
+                location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/code-samples-go-livepeerai-go
