@@ -14,16 +14,16 @@ package main
 
 import (
 	"context"
-	"github.com/my-company/livepeerai"
-	"github.com/my-company/livepeerai/models/components"
-	"github.com/my-company/livepeerai/retry"
+	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+	"github.com/livepeer/livepeer-ai-go/models/components"
+	"github.com/livepeer/livepeer-ai-go/retry"
 	"log"
 	"models/operations"
 )
 
 func main() {
-	s := livepeerai.New(
-		livepeerai.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	s := livepeeraigo.New(
+		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{
 		Prompt: "<value>",
@@ -56,15 +56,15 @@ package main
 
 import (
 	"context"
-	"github.com/my-company/livepeerai"
-	"github.com/my-company/livepeerai/models/components"
-	"github.com/my-company/livepeerai/retry"
+	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+	"github.com/livepeer/livepeer-ai-go/models/components"
+	"github.com/livepeer/livepeer-ai-go/retry"
 	"log"
 )
 
 func main() {
-	s := livepeerai.New(
-		livepeerai.WithRetryConfig(
+	s := livepeeraigo.New(
+		livepeeraigo.WithRetryConfig(
 			retry.Config{
 				Strategy: "backoff",
 				Backoff: &retry.BackoffStrategy{
@@ -75,7 +75,7 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		livepeerai.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{
 		Prompt: "<value>",
@@ -112,15 +112,15 @@ package main
 import (
 	"context"
 	"errors"
-	"github.com/my-company/livepeerai"
-	"github.com/my-company/livepeerai/models/components"
-	"github.com/my-company/livepeerai/models/sdkerrors"
+	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+	"github.com/livepeer/livepeer-ai-go/models/components"
+	"github.com/livepeer/livepeer-ai-go/models/sdkerrors"
 	"log"
 )
 
 func main() {
-	s := livepeerai.New(
-		livepeerai.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	s := livepeeraigo.New(
+		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{
 		Prompt: "<value>",
@@ -170,15 +170,15 @@ package main
 
 import (
 	"context"
-	"github.com/my-company/livepeerai"
-	"github.com/my-company/livepeerai/models/components"
+	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+	"github.com/livepeer/livepeer-ai-go/models/components"
 	"log"
 )
 
 func main() {
-	s := livepeerai.New(
-		livepeerai.WithServerIndex(0),
-		livepeerai.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	s := livepeeraigo.New(
+		livepeeraigo.WithServerIndex(0),
+		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{
 		Prompt: "<value>",
@@ -204,15 +204,15 @@ package main
 
 import (
 	"context"
-	"github.com/my-company/livepeerai"
-	"github.com/my-company/livepeerai/models/components"
+	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+	"github.com/livepeer/livepeer-ai-go/models/components"
 	"log"
 )
 
 func main() {
-	s := livepeerai.New(
-		livepeerai.WithServerURL("https://dream-gateway.livepeer.cloud"),
-		livepeerai.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	s := livepeeraigo.New(
+		livepeeraigo.WithServerURL("https://dream-gateway.livepeer.cloud"),
+		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{
 		Prompt: "<value>",
@@ -276,14 +276,14 @@ package main
 
 import (
 	"context"
-	"github.com/my-company/livepeerai"
-	"github.com/my-company/livepeerai/models/components"
+	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+	"github.com/livepeer/livepeer-ai-go/models/components"
 	"log"
 )
 
 func main() {
-	s := livepeerai.New(
-		livepeerai.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	s := livepeeraigo.New(
+		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{
 		Prompt: "<value>",

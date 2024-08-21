@@ -3,12 +3,13 @@
 package components
 
 import (
-	"github.com/my-company/livepeerai/internal/utils"
+	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
 type BodyUpscaleUpscalePostImage struct {
 	FileName string `multipartForm:"name=image"`
-	Content  []byte `multipartForm:"content"`
+	// This field accepts []byte data or io.Reader implementations, such as *os.File.
+	Content any `multipartForm:"content"`
 }
 
 func (o *BodyUpscaleUpscalePostImage) GetFileName() string {
@@ -18,9 +19,9 @@ func (o *BodyUpscaleUpscalePostImage) GetFileName() string {
 	return o.FileName
 }
 
-func (o *BodyUpscaleUpscalePostImage) GetContent() []byte {
+func (o *BodyUpscaleUpscalePostImage) GetContent() any {
 	if o == nil {
-		return []byte{}
+		return nil
 	}
 	return o.Content
 }

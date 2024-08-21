@@ -5,7 +5,7 @@ package components
 import (
 	"errors"
 	"fmt"
-	"github.com/my-company/livepeerai/internal/utils"
+	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
 type LocType string

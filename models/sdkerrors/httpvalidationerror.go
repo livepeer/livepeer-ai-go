@@ -4,7 +4,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"github.com/my-company/livepeerai/models/components"
+	"github.com/livepeer/livepeer-ai-go/models/components"
 )
 
 // HTTPValidationError - Validation Error

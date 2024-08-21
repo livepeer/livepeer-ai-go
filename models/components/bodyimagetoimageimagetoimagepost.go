@@ -3,12 +3,13 @@
 package components
 
 import (
-	"github.com/my-company/livepeerai/internal/utils"
+	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
 type Image struct {
 	FileName string `multipartForm:"name=image"`
-	Content  []byte `multipartForm:"content"`
+	// This field accepts []byte data or io.Reader implementations, such as *os.File.
+	Content any `multipartForm:"content"`
 }
 
 func (o *Image) GetFileName() string {
@@ -18,9 +19,9 @@ func (o *Image) GetFileName() string {
 	return o.FileName
 }
 
-func (o *Image) GetContent() []byte {
+func (o *Image) GetContent() any {
 	if o == nil {
-		return []byte{}
+		return nil
 	}
 	return o.Content
 }

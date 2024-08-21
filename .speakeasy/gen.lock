@@ -3,15 +3,15 @@ id: 98621ff3-f200-4a5c-9c69-bc1fe845e39c
 management:
   docChecksum: c222ffbf28e5f62770dc8cbd99010f96
   docVersion: v0.1.2
-  speakeasyVersion: 1.372.0
-  generationVersion: 2.399.0
-  releaseVersion: 0.0.1
-  configChecksum: 4d04c7089724a1b7f5b95edac2a0ddea
+  speakeasyVersion: 1.377.0
+  generationVersion: 2.404.0
+  releaseVersion: 0.1.2
+  configChecksum: 9eb1d780a24ea18d23a76ec422c1cb4d
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.4
+    core: 3.5.5
     defaultEnabledRetries: 0.2.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.3.0
@@ -24,6 +24,7 @@ features:
     retries: 2.83.0
     sdkHooks: 0.1.0
     unions: 2.85.9
+    uploadStreams: 0.1.0
 generatedFiles:
   - livepeerai.go
   - go.mod

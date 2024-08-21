@@ -3,7 +3,8 @@ generation:
   devContainers:
     enabled: true
     schemaPath: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.json
-  sdkClassName: Livepeerai
+  baseServerUrl: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.json
+  sdkClassName: LivepeerAI
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -15,7 +16,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 go:
-  version: 0.0.1
+  version: 0.1.2
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   clientServerStatusCodesAsErrors: true
@@ -32,5 +33,5 @@ go:
   maxMethodParams: 4
   methodArguments: require-security-and-request
   outputModelSuffix: output
-  packageName: github.com/my-company/livepeerai
+  packageName: github.com/livepeer/livepeer-ai-go
   responseFormat: envelope-http

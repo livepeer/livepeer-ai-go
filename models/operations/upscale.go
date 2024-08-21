@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/my-company/livepeerai/models/components"
+	"github.com/livepeer/livepeer-ai-go/models/components"
 )
 
 type UpscaleResponse struct {
