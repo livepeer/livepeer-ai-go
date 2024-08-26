@@ -2,9 +2,12 @@
 
 package components
 
+// Chunk - A chunk of text with a timestamp.
 type Chunk struct {
-	Timestamp []any  `json:"timestamp"`
-	Text      string `json:"text"`
+	// The timestamp of the chunk.
+	Timestamp []any `json:"timestamp"`
+	// The text of the chunk.
+	Text string `json:"text"`
 }
 
 func (o *Chunk) GetTimestamp() []any {

@@ -2,7 +2,9 @@
 
 package components
 
+// APIError - API error response model.
 type APIError struct {
+	// The error message.
 	Msg string `json:"msg"`
 }
 

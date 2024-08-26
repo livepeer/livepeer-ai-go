@@ -1,12 +1,11 @@
-speakeasyVersion: 1.377.0
+speakeasyVersion: 1.379.0
 sources:
     livepeerai-OAS:
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:f646e5d47ef02204d486dc5bf6ea48a875ebb2a6558557bb2026af2a9af4a812
-        sourceBlobDigest: sha256:88b77186fc98fe193435d3069ab2e85fe4d404e802e4e23761979e984649ff70
+        sourceRevisionDigest: sha256:a1d4d8ee9e58680698013d18cb2f5c021690edb42206f786495e1080a7e0666c
+        sourceBlobDigest: sha256:b5fd6a2637c962cec1dc87c6d3807ab6fab6fb34f7ed7f1138ab7508e1554352
         tags:
             - latest
-            - main
 targets:
     livepeerai:
         source: livepeerai-OAS
@@ -17,18 +16,18 @@ targets:
     livepeerai-go:
         source: livepeerai-OAS
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:f646e5d47ef02204d486dc5bf6ea48a875ebb2a6558557bb2026af2a9af4a812
-        sourceBlobDigest: sha256:88b77186fc98fe193435d3069ab2e85fe4d404e802e4e23761979e984649ff70
+        sourceRevisionDigest: sha256:a1d4d8ee9e58680698013d18cb2f5c021690edb42206f786495e1080a7e0666c
+        sourceBlobDigest: sha256:b5fd6a2637c962cec1dc87c6d3807ab6fab6fb34f7ed7f1138ab7508e1554352
         codeSamplesNamespace: code-samples-go-livepeerai-go
-        codeSamplesRevisionDigest: sha256:7034b6c4a6581852d0bd476d318445c3814803f206a136786e24e2c260890052
-        outLocation: /github/workspace/repo
+        codeSamplesRevisionDigest: sha256:028b59c8bd8e7189167b97975e1fe683e0aa0dd178614dc408e94e4576228f87
+        outLocation: /home/ricks/development/livepeer/ai/livepeer-ai-go
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         livepeerai-OAS:
             inputs:
-                - location: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.json
+                - location: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/livepeerai-oas
     targets:

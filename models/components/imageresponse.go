@@ -2,7 +2,9 @@
 
 package components
 
+// ImageResponse - Response model for image generation.
 type ImageResponse struct {
+	// The generated images.
 	Images []Media `json:"images"`
 }
 
