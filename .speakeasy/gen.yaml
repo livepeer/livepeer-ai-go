@@ -2,8 +2,8 @@ configVersion: 2.0.0
 generation:
   devContainers:
     enabled: true
-    schemaPath: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.json
-  baseServerUrl: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.json
+    schemaPath: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.yaml
+  baseServerUrl: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.yaml
   sdkClassName: LivepeerAI
   maintainOpenAPIOrder: true
   usageSnippets:
@@ -16,7 +16,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 go:
-  version: 0.1.3
+  version: 0.1.4
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   clientServerStatusCodesAsErrors: true

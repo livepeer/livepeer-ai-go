@@ -7,8 +7,9 @@ import (
 	"github.com/livepeer/livepeer-ai-go/models/components"
 )
 
-// HTTPError - Bad Request
+// HTTPError - HTTP error response model.
 type HTTPError struct {
+	// Detailed error information.
 	Detail components.APIError `json:"detail"`
 }
 

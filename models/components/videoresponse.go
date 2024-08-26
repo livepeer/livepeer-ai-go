@@ -2,7 +2,9 @@
 
 package components
 
+// VideoResponse - Response model for image generation.
 type VideoResponse struct {
+	// The generated images.
 	Images []Media `json:"images"`
 }
 

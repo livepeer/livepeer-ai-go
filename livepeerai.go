@@ -150,9 +150,9 @@ func New(opts ...SDKOption) *LivepeerAI {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "v0.1.2",
-			SDKVersion:        "0.1.3",
-			GenVersion:        "2.404.0",
-			UserAgent:         "speakeasy-sdk/go 0.1.3 2.404.0 v0.1.2 github.com/livepeer/livepeer-ai-go",
+			SDKVersion:        "0.1.4",
+			GenVersion:        "2.404.3",
+			UserAgent:         "speakeasy-sdk/go 0.1.4 2.404.3 v0.1.2 github.com/livepeer/livepeer-ai-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -176,10 +176,12 @@ func New(opts ...SDKOption) *LivepeerAI {
 }
 
 // TextToImage - Text To Image
+// Generate images from text prompts.
 func (s *LivepeerAI) TextToImage(ctx context.Context, request components.TextToImageParams, opts ...operations.Option) (*operations.TextToImageResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "text_to_image",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -382,10 +384,12 @@ func (s *LivepeerAI) TextToImage(ctx context.Context, request components.TextToI
 }
 
 // ImageToImage - Image To Image
+// Apply image transformations to a provided image.
 func (s *LivepeerAI) ImageToImage(ctx context.Context, request components.BodyImageToImageImageToImagePost, opts ...operations.Option) (*operations.ImageToImageResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "image_to_image",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -588,10 +592,12 @@ func (s *LivepeerAI) ImageToImage(ctx context.Context, request components.BodyIm
 }
 
 // ImageToVideo - Image To Video
+// Generate a video from a provided image.
 func (s *LivepeerAI) ImageToVideo(ctx context.Context, request components.BodyImageToVideoImageToVideoPost, opts ...operations.Option) (*operations.ImageToVideoResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "image_to_video",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -794,10 +800,12 @@ func (s *LivepeerAI) ImageToVideo(ctx context.Context, request components.BodyIm
 }
 
 // Upscale
+// Upscale an image by increasing its resolution.
 func (s *LivepeerAI) Upscale(ctx context.Context, request components.BodyUpscaleUpscalePost, opts ...operations.Option) (*operations.UpscaleResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upscale",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1000,10 +1008,12 @@ func (s *LivepeerAI) Upscale(ctx context.Context, request components.BodyUpscale
 }
 
 // AudioToText - Audio To Text
+// Transcribe audio files to text.
 func (s *LivepeerAI) AudioToText(ctx context.Context, request components.BodyAudioToTextAudioToTextPost, opts ...operations.Option) (*operations.AudioToTextResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "audio_to_text",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 

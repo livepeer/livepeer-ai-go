@@ -12,4 +12,4 @@ go mod download
 go mod tidy
 
 # Generate starter usage sample with speakeasy
-speakeasy generate usage -s https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.json -l go -o samples/root.go
+speakeasy generate usage -s https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.yaml -l go -o samples/root.go

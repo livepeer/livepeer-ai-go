@@ -2,8 +2,11 @@
 
 package components
 
+// TextResponse - Response model for text generation.
 type TextResponse struct {
-	Text   string  `json:"text"`
+	// The generated text.
+	Text string `json:"text"`
+	// The generated text chunks.
 	Chunks []Chunk `json:"chunks"`
 }
 

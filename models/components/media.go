@@ -2,10 +2,14 @@
 
 package components
 
+// Media - A media object containing information about the generated media.
 type Media struct {
-	URL  string `json:"url"`
-	Seed int64  `json:"seed"`
-	Nsfw bool   `json:"nsfw"`
+	// The URL where the media can be accessed.
+	URL string `json:"url"`
+	// The seed used to generate the media.
+	Seed int64 `json:"seed"`
+	// Whether the media was flagged as NSFW.
+	Nsfw bool `json:"nsfw"`
 }
 
 func (o *Media) GetURL() string {
