@@ -3,6 +3,40 @@ info:
   title: CodeSamples overlay for go target
   version: 0.0.0
 actions:
+  - target: $["paths"]["/audio-to-text"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: audio_to_text
+          source: |-
+            package main
+
+            import(
+            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := livepeeraigo.New(
+                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+                )
+                request := components.BodyAudioToTextAudioToTextPost{
+                    Audio: components.Audio{
+                        FileName: "your_file_here",
+                        Content: os.Open("<file_path>"),
+                    },
+                }
+                ctx := context.Background()
+                res, err := s.AudioToText(ctx, request)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.TextResponse != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/text-to-image"]["post"]
     update:
       x-codeSamples:
@@ -135,40 +169,6 @@ actions:
                     log.Fatal(err)
                 }
                 if res.ImageResponse != nil {
-                    // handle response
-                }
-            }
-  - target: $["paths"]["/audio-to-text"]["post"]
-    update:
-      x-codeSamples:
-        - lang: go
-          label: audio_to_text
-          source: |-
-            package main
-
-            import(
-            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"github.com/livepeer/livepeer-ai-go/models/components"
-            	"context"
-            	"log"
-            )
-
-            func main() {
-                s := livepeeraigo.New(
-                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
-                )
-                request := components.BodyAudioToTextAudioToTextPost{
-                    Audio: components.Audio{
-                        FileName: "your_file_here",
-                        Content: os.Open("<file_path>"),
-                    },
-                }
-                ctx := context.Background()
-                res, err := s.AudioToText(ctx, request)
-                if err != nil {
-                    log.Fatal(err)
-                }
-                if res.TextResponse != nil {
                     // handle response
                 }
             }

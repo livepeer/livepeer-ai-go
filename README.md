@@ -164,6 +164,7 @@ You can override the default server globally using the `WithServerIndex` option 
 | # | Server | Variables |
 | - | ------ | --------- |
 | 0 | `https://dream-gateway.livepeer.cloud` | None |
+| 1 | `https://livepeer.studio/api/beta/generate` | None |
 
 #### Example
 
@@ -179,7 +180,7 @@ import (
 
 func main() {
 	s := livepeeraigo.New(
-		livepeeraigo.WithServerIndex(0),
+		livepeeraigo.WithServerIndex(1),
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.TextToImageParams{

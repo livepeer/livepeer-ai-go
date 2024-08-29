@@ -23,6 +23,8 @@ import (
 var ServerList = []string{
 	// Livepeer Cloud Community Gateway
 	"https://dream-gateway.livepeer.cloud",
+	// Livepeer Studio Gateway
+	"https://livepeer.studio/api/beta/generate",
 }
 
 // HTTPClient provides an interface for suplying the SDK with a custom HTTP client
@@ -150,9 +152,9 @@ func New(opts ...SDKOption) *LivepeerAI {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "v0.1.2",
-			SDKVersion:        "0.1.4",
-			GenVersion:        "2.404.3",
-			UserAgent:         "speakeasy-sdk/go 0.1.4 2.404.3 v0.1.2 github.com/livepeer/livepeer-ai-go",
+			SDKVersion:        "0.1.5",
+			GenVersion:        "2.404.11",
+			UserAgent:         "speakeasy-sdk/go 0.1.5 2.404.11 v0.1.2 github.com/livepeer/livepeer-ai-go",
 			Hooks:             hooks.New(),
 		},
 	}
