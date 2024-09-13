@@ -27,11 +27,11 @@ func main() {
 	s := livepeeraigo.New(
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.TextToImageParams{
-		Prompt: "<value>",
-	}
+
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, request, operations.WithRetries(
+	res, err := s.TextToImage(ctx, components.TextToImageParams{
+		Prompt: "<value>",
+	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -79,11 +79,11 @@ func main() {
 			}),
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.TextToImageParams{
-		Prompt: "<value>",
-	}
+
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, request)
+	res, err := s.TextToImage(ctx, components.TextToImageParams{
+		Prompt: "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -124,11 +124,11 @@ func main() {
 	s := livepeeraigo.New(
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.TextToImageParams{
-		Prompt: "<value>",
-	}
+
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, request)
+	res, err := s.TextToImage(ctx, components.TextToImageParams{
+		Prompt: "<value>",
+	})
 	if err != nil {
 
 		var e *sdkerrors.HTTPError
@@ -183,11 +183,11 @@ func main() {
 		livepeeraigo.WithServerIndex(1),
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.TextToImageParams{
-		Prompt: "<value>",
-	}
+
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, request)
+	res, err := s.TextToImage(ctx, components.TextToImageParams{
+		Prompt: "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -217,11 +217,11 @@ func main() {
 		livepeeraigo.WithServerURL("https://dream-gateway.livepeer.cloud"),
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.TextToImageParams{
-		Prompt: "<value>",
-	}
+
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, request)
+	res, err := s.TextToImage(ctx, components.TextToImageParams{
+		Prompt: "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -288,11 +288,11 @@ func main() {
 	s := livepeeraigo.New(
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.TextToImageParams{
-		Prompt: "<value>",
-	}
+
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, request)
+	res, err := s.TextToImage(ctx, components.TextToImageParams{
+		Prompt: "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
