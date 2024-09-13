@@ -3,18 +3,19 @@ info:
   title: CodeSamples overlay for go target
   version: 0.0.0
 actions:
-  - target: $["paths"]["/text-to-image"]["post"]
+  - target: $["paths"]["/audio-to-text"]["post"]
     update:
       x-codeSamples:
         - lang: go
-          label: text_to_image
+          label: audio_to_text
           source: |-
             package main
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"os"
             	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
             	"log"
             )
 
@@ -22,15 +23,23 @@ actions:
                 s := livepeeraigo.New(
                     livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
                 )
-                request := components.TextToImageParams{
-                    Prompt: "<value>",
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
                 }
+
                 ctx := context.Background()
-                res, err := s.TextToImage(ctx, request)
+                res, err := s.AudioToText(ctx, components.BodyAudioToTextAudioToTextPost{
+                    Audio: components.Audio{
+                        FileName: "example.file",
+                        Content: content,
+                    },
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
-                if res.ImageResponse != nil {
+                if res.TextResponse != nil {
                     // handle response
                 }
             }
@@ -44,8 +53,9 @@ actions:
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"os"
             	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
             	"log"
             )
 
@@ -53,15 +63,20 @@ actions:
                 s := livepeeraigo.New(
                     livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
                 )
-                request := components.BodyImageToImageImageToImagePost{
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
+                }
+
+                ctx := context.Background()
+                res, err := s.ImageToImage(ctx, components.BodyImageToImageImageToImagePost{
                     Prompt: "<value>",
                     Image: components.Image{
-                        FileName: "your_file_here",
-                        Content: os.Open("<file_path>"),
+                        FileName: "example.file",
+                        Content: content,
                     },
-                }
-                ctx := context.Background()
-                res, err := s.ImageToImage(ctx, request)
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -79,8 +94,9 @@ actions:
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"os"
             	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
             	"log"
             )
 
@@ -88,18 +104,94 @@ actions:
                 s := livepeeraigo.New(
                     livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
                 )
-                request := components.BodyImageToVideoImageToVideoPost{
-                    Image: components.BodyImageToVideoImageToVideoPostImage{
-                        FileName: "your_file_here",
-                        Content: os.Open("<file_path>"),
-                    },
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
                 }
+
                 ctx := context.Background()
-                res, err := s.ImageToVideo(ctx, request)
+                res, err := s.ImageToVideo(ctx, components.BodyImageToVideoImageToVideoPost{
+                    Image: components.BodyImageToVideoImageToVideoPostImage{
+                        FileName: "example.file",
+                        Content: content,
+                    },
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
                 if res.VideoResponse != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/segment-anything-2"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: segment_anything_2
+          source: |-
+            package main
+
+            import(
+            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+            	"os"
+            	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"log"
+            )
+
+            func main() {
+                s := livepeeraigo.New(
+                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+                )
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
+                }
+
+                ctx := context.Background()
+                res, err := s.SegmentAnything2(ctx, components.BodySegmentAnything2SegmentAnything2Post{
+                    Image: components.BodySegmentAnything2SegmentAnything2PostImage{
+                        FileName: "example.file",
+                        Content: content,
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.MasksResponse != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/text-to-image"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: text_to_image
+          source: |-
+            package main
+
+            import(
+            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+            	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"log"
+            )
+
+            func main() {
+                s := livepeeraigo.New(
+                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+                )
+
+                ctx := context.Background()
+                res, err := s.TextToImage(ctx, components.TextToImageParams{
+                    Prompt: "<value>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.ImageResponse != nil {
                     // handle response
                 }
             }
@@ -113,8 +205,9 @@ actions:
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"os"
             	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
             	"log"
             )
 
@@ -122,53 +215,24 @@ actions:
                 s := livepeeraigo.New(
                     livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
                 )
-                request := components.BodyUpscaleUpscalePost{
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
+                }
+
+                ctx := context.Background()
+                res, err := s.Upscale(ctx, components.BodyUpscaleUpscalePost{
                     Prompt: "<value>",
                     Image: components.BodyUpscaleUpscalePostImage{
-                        FileName: "your_file_here",
-                        Content: os.Open("<file_path>"),
+                        FileName: "example.file",
+                        Content: content,
                     },
-                }
-                ctx := context.Background()
-                res, err := s.Upscale(ctx, request)
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
                 if res.ImageResponse != nil {
-                    // handle response
-                }
-            }
-  - target: $["paths"]["/audio-to-text"]["post"]
-    update:
-      x-codeSamples:
-        - lang: go
-          label: audio_to_text
-          source: |-
-            package main
-
-            import(
-            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"github.com/livepeer/livepeer-ai-go/models/components"
-            	"context"
-            	"log"
-            )
-
-            func main() {
-                s := livepeeraigo.New(
-                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
-                )
-                request := components.BodyAudioToTextAudioToTextPost{
-                    Audio: components.Audio{
-                        FileName: "your_file_here",
-                        Content: os.Open("<file_path>"),
-                    },
-                }
-                ctx := context.Background()
-                res, err := s.AudioToText(ctx, request)
-                if err != nil {
-                    log.Fatal(err)
-                }
-                if res.TextResponse != nil {
                     // handle response
                 }
             }

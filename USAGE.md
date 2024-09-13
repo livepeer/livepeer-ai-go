@@ -13,11 +13,11 @@ func main() {
 	s := livepeeraigo.New(
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.TextToImageParams{
-		Prompt: "<value>",
-	}
+
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, request)
+	res, err := s.TextToImage(ctx, components.TextToImageParams{
+		Prompt: "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
