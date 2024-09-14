@@ -7,7 +7,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: audio_to_text
+          label: genAudioToText
           source: |-
             package main
 
@@ -30,7 +30,7 @@ actions:
                 }
 
                 ctx := context.Background()
-                res, err := s.AudioToText(ctx, components.BodyAudioToTextAudioToTextPost{
+                res, err := s.Generate.AudioToText(ctx, components.BodyGenAudioToText{
                     Audio: components.Audio{
                         FileName: "example.file",
                         Content: content,
@@ -47,7 +47,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: image_to_image
+          label: genImageToImage
           source: |-
             package main
 
@@ -70,7 +70,7 @@ actions:
                 }
 
                 ctx := context.Background()
-                res, err := s.ImageToImage(ctx, components.BodyImageToImageImageToImagePost{
+                res, err := s.Generate.ImageToImage(ctx, components.BodyGenImageToImage{
                     Prompt: "<value>",
                     Image: components.Image{
                         FileName: "example.file",
@@ -88,7 +88,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: image_to_video
+          label: genImageToVideo
           source: |-
             package main
 
@@ -111,8 +111,8 @@ actions:
                 }
 
                 ctx := context.Background()
-                res, err := s.ImageToVideo(ctx, components.BodyImageToVideoImageToVideoPost{
-                    Image: components.BodyImageToVideoImageToVideoPostImage{
+                res, err := s.Generate.ImageToVideo(ctx, components.BodyGenImageToVideo{
+                    Image: components.BodyGenImageToVideoImage{
                         FileName: "example.file",
                         Content: content,
                     },
@@ -128,7 +128,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: segment_anything_2
+          label: genSegmentAnything2
           source: |-
             package main
 
@@ -151,8 +151,8 @@ actions:
                 }
 
                 ctx := context.Background()
-                res, err := s.SegmentAnything2(ctx, components.BodySegmentAnything2SegmentAnything2Post{
-                    Image: components.BodySegmentAnything2SegmentAnything2PostImage{
+                res, err := s.Generate.SegmentAnything2(ctx, components.BodyGenSegmentAnything2{
+                    Image: components.BodyGenSegmentAnything2Image{
                         FileName: "example.file",
                         Content: content,
                     },
@@ -168,7 +168,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: text_to_image
+          label: genTextToImage
           source: |-
             package main
 
@@ -185,7 +185,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.TextToImage(ctx, components.TextToImageParams{
+                res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
                     Prompt: "<value>",
                 })
                 if err != nil {
@@ -199,7 +199,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: upscale
+          label: genUpscale
           source: |-
             package main
 
@@ -222,9 +222,9 @@ actions:
                 }
 
                 ctx := context.Background()
-                res, err := s.Upscale(ctx, components.BodyUpscaleUpscalePost{
+                res, err := s.Generate.Upscale(ctx, components.BodyGenUpscale{
                     Prompt: "<value>",
-                    Image: components.BodyUpscaleUpscalePostImage{
+                    Image: components.BodyGenUpscaleImage{
                         FileName: "example.file",
                         Content: content,
                     },

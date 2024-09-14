@@ -26,7 +26,7 @@ func (o *Image) GetContent() any {
 	return o.Content
 }
 
-type BodyImageToImageImageToImagePost struct {
+type BodyGenImageToImage struct {
 	// Text prompt(s) to guide image generation.
 	Prompt string `multipartForm:"name=prompt"`
 	// Uploaded image to modify with the pipeline.
@@ -51,88 +51,88 @@ type BodyImageToImageImageToImagePost struct {
 	NumImagesPerPrompt *int64 `default:"1" multipartForm:"name=num_images_per_prompt"`
 }
 
-func (b BodyImageToImageImageToImagePost) MarshalJSON() ([]byte, error) {
+func (b BodyGenImageToImage) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(b, "", false)
 }
 
-func (b *BodyImageToImageImageToImagePost) UnmarshalJSON(data []byte) error {
+func (b *BodyGenImageToImage) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyImageToImageImageToImagePost) GetPrompt() string {
+func (o *BodyGenImageToImage) GetPrompt() string {
 	if o == nil {
 		return ""
 	}
 	return o.Prompt
 }
 
-func (o *BodyImageToImageImageToImagePost) GetImage() Image {
+func (o *BodyGenImageToImage) GetImage() Image {
 	if o == nil {
 		return Image{}
 	}
 	return o.Image
 }
 
-func (o *BodyImageToImageImageToImagePost) GetModelID() *string {
+func (o *BodyGenImageToImage) GetModelID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ModelID
 }
 
-func (o *BodyImageToImageImageToImagePost) GetStrength() *float64 {
+func (o *BodyGenImageToImage) GetStrength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Strength
 }
 
-func (o *BodyImageToImageImageToImagePost) GetGuidanceScale() *float64 {
+func (o *BodyGenImageToImage) GetGuidanceScale() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.GuidanceScale
 }
 
-func (o *BodyImageToImageImageToImagePost) GetImageGuidanceScale() *float64 {
+func (o *BodyGenImageToImage) GetImageGuidanceScale() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ImageGuidanceScale
 }
 
-func (o *BodyImageToImageImageToImagePost) GetNegativePrompt() *string {
+func (o *BodyGenImageToImage) GetNegativePrompt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NegativePrompt
 }
 
-func (o *BodyImageToImageImageToImagePost) GetSafetyCheck() *bool {
+func (o *BodyGenImageToImage) GetSafetyCheck() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.SafetyCheck
 }
 
-func (o *BodyImageToImageImageToImagePost) GetSeed() *int64 {
+func (o *BodyGenImageToImage) GetSeed() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Seed
 }
 
-func (o *BodyImageToImageImageToImagePost) GetNumInferenceSteps() *int64 {
+func (o *BodyGenImageToImage) GetNumInferenceSteps() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.NumInferenceSteps
 }
 
-func (o *BodyImageToImageImageToImagePost) GetNumImagesPerPrompt() *int64 {
+func (o *BodyGenImageToImage) GetNumImagesPerPrompt() *int64 {
 	if o == nil {
 		return nil
 	}

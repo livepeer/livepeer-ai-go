@@ -1,4 +1,4 @@
-# BodyUpscaleUpscalePostImage
+# BodyGenUpscaleImage
 
 
 ## Fields

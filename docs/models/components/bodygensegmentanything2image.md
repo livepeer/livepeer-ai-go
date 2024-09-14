@@ -1,4 +1,4 @@
-# BodySegmentAnything2SegmentAnything2PostImage
+# BodyGenSegmentAnything2Image
 
 
 ## Fields

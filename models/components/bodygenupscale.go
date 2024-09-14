@@ -6,31 +6,31 @@ import (
 	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
-type BodyUpscaleUpscalePostImage struct {
+type BodyGenUpscaleImage struct {
 	FileName string `multipartForm:"name=image"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
 
-func (o *BodyUpscaleUpscalePostImage) GetFileName() string {
+func (o *BodyGenUpscaleImage) GetFileName() string {
 	if o == nil {
 		return ""
 	}
 	return o.FileName
 }
 
-func (o *BodyUpscaleUpscalePostImage) GetContent() any {
+func (o *BodyGenUpscaleImage) GetContent() any {
 	if o == nil {
 		return nil
 	}
 	return o.Content
 }
 
-type BodyUpscaleUpscalePost struct {
+type BodyGenUpscale struct {
 	// Text prompt(s) to guide upscaled image generation.
 	Prompt string `multipartForm:"name=prompt"`
 	// Uploaded image to modify with the pipeline.
-	Image BodyUpscaleUpscalePostImage `multipartForm:"file"`
+	Image BodyGenUpscaleImage `multipartForm:"file"`
 	// Hugging Face model ID used for upscaled image generation.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// Perform a safety check to estimate if generated images could be offensive or harmful.
@@ -41,53 +41,53 @@ type BodyUpscaleUpscalePost struct {
 	NumInferenceSteps *int64 `default:"75" multipartForm:"name=num_inference_steps"`
 }
 
-func (b BodyUpscaleUpscalePost) MarshalJSON() ([]byte, error) {
+func (b BodyGenUpscale) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(b, "", false)
 }
 
-func (b *BodyUpscaleUpscalePost) UnmarshalJSON(data []byte) error {
+func (b *BodyGenUpscale) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyUpscaleUpscalePost) GetPrompt() string {
+func (o *BodyGenUpscale) GetPrompt() string {
 	if o == nil {
 		return ""
 	}
 	return o.Prompt
 }
 
-func (o *BodyUpscaleUpscalePost) GetImage() BodyUpscaleUpscalePostImage {
+func (o *BodyGenUpscale) GetImage() BodyGenUpscaleImage {
 	if o == nil {
-		return BodyUpscaleUpscalePostImage{}
+		return BodyGenUpscaleImage{}
 	}
 	return o.Image
 }
 
-func (o *BodyUpscaleUpscalePost) GetModelID() *string {
+func (o *BodyGenUpscale) GetModelID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ModelID
 }
 
-func (o *BodyUpscaleUpscalePost) GetSafetyCheck() *bool {
+func (o *BodyGenUpscale) GetSafetyCheck() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.SafetyCheck
 }
 
-func (o *BodyUpscaleUpscalePost) GetSeed() *int64 {
+func (o *BodyGenUpscale) GetSeed() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Seed
 }
 
-func (o *BodyUpscaleUpscalePost) GetNumInferenceSteps() *int64 {
+func (o *BodyGenUpscale) GetNumInferenceSteps() *int64 {
 	if o == nil {
 		return nil
 	}

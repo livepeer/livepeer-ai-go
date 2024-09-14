@@ -6,22 +6,22 @@ import (
 	"github.com/livepeer/livepeer-ai-go/models/components"
 )
 
-type ImageToImageResponse struct {
+type GenAudioToTextResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful Response
-	ImageResponse *components.ImageResponse
+	TextResponse *components.TextResponse
 }
 
-func (o *ImageToImageResponse) GetHTTPMeta() components.HTTPMetadata {
+func (o *GenAudioToTextResponse) GetHTTPMeta() components.HTTPMetadata {
 	if o == nil {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
 }
 
-func (o *ImageToImageResponse) GetImageResponse() *components.ImageResponse {
+func (o *GenAudioToTextResponse) GetTextResponse() *components.TextResponse {
 	if o == nil {
 		return nil
 	}
-	return o.ImageResponse
+	return o.TextResponse
 }

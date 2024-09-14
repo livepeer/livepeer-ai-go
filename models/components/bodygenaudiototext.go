@@ -26,32 +26,32 @@ func (o *Audio) GetContent() any {
 	return o.Content
 }
 
-type BodyAudioToTextAudioToTextPost struct {
+type BodyGenAudioToText struct {
 	// Uploaded audio file to be transcribed.
 	Audio Audio `multipartForm:"file"`
 	// Hugging Face model ID used for transcription.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 }
 
-func (b BodyAudioToTextAudioToTextPost) MarshalJSON() ([]byte, error) {
+func (b BodyGenAudioToText) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(b, "", false)
 }
 
-func (b *BodyAudioToTextAudioToTextPost) UnmarshalJSON(data []byte) error {
+func (b *BodyGenAudioToText) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyAudioToTextAudioToTextPost) GetAudio() Audio {
+func (o *BodyGenAudioToText) GetAudio() Audio {
 	if o == nil {
 		return Audio{}
 	}
 	return o.Audio
 }
 
-func (o *BodyAudioToTextAudioToTextPost) GetModelID() *string {
+func (o *BodyGenAudioToText) GetModelID() *string {
 	if o == nil {
 		return nil
 	}

@@ -6,22 +6,22 @@ import (
 	"github.com/livepeer/livepeer-ai-go/models/components"
 )
 
-type SegmentAnything2Response struct {
+type GenUpscaleResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful Response
-	MasksResponse *components.MasksResponse
+	ImageResponse *components.ImageResponse
 }
 
-func (o *SegmentAnything2Response) GetHTTPMeta() components.HTTPMetadata {
+func (o *GenUpscaleResponse) GetHTTPMeta() components.HTTPMetadata {
 	if o == nil {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
 }
 
-func (o *SegmentAnything2Response) GetMasksResponse() *components.MasksResponse {
+func (o *GenUpscaleResponse) GetImageResponse() *components.ImageResponse {
 	if o == nil {
 		return nil
 	}
-	return o.MasksResponse
+	return o.ImageResponse
 }
