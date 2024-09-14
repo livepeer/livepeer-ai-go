@@ -1,4 +1,4 @@
-# SegmentAnything2Response
+# GenTextToImageResponse
 
 
 ## Fields
@@ -6,4 +6,4 @@
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `HTTPMeta`                                                            | [components.HTTPMetadata](../../models/components/httpmetadata.md)    | :heavy_check_mark:                                                    | N/A                                                                   |
-| `MasksResponse`                                                       | [*components.MasksResponse](../../models/components/masksresponse.md) | :heavy_minus_sign:                                                    | Successful Response                                                   |
+| `ImageResponse`                                                       | [*components.ImageResponse](../../models/components/imageresponse.md) | :heavy_minus_sign:                                                    | Successful Response                                                   |

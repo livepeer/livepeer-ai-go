@@ -15,7 +15,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.TextToImage(ctx, components.TextToImageParams{
+	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
 		Prompt: "<value>",
 	})
 	if err != nil {

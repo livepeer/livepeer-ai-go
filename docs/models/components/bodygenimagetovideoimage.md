@@ -1,4 +1,4 @@
-# BodyImageToVideoImageToVideoPostImage
+# BodyGenImageToVideoImage
 
 
 ## Fields

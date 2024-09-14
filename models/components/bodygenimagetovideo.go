@@ -6,29 +6,29 @@ import (
 	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
-type BodyImageToVideoImageToVideoPostImage struct {
+type BodyGenImageToVideoImage struct {
 	FileName string `multipartForm:"name=image"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
 
-func (o *BodyImageToVideoImageToVideoPostImage) GetFileName() string {
+func (o *BodyGenImageToVideoImage) GetFileName() string {
 	if o == nil {
 		return ""
 	}
 	return o.FileName
 }
 
-func (o *BodyImageToVideoImageToVideoPostImage) GetContent() any {
+func (o *BodyGenImageToVideoImage) GetContent() any {
 	if o == nil {
 		return nil
 	}
 	return o.Content
 }
 
-type BodyImageToVideoImageToVideoPost struct {
+type BodyGenImageToVideo struct {
 	// Uploaded image to generate a video from.
-	Image BodyImageToVideoImageToVideoPostImage `multipartForm:"file"`
+	Image BodyGenImageToVideoImage `multipartForm:"file"`
 	// Hugging Face model ID used for video generation.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// The height in pixels of the generated video.
@@ -49,81 +49,81 @@ type BodyImageToVideoImageToVideoPost struct {
 	NumInferenceSteps *int64 `default:"25" multipartForm:"name=num_inference_steps"`
 }
 
-func (b BodyImageToVideoImageToVideoPost) MarshalJSON() ([]byte, error) {
+func (b BodyGenImageToVideo) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(b, "", false)
 }
 
-func (b *BodyImageToVideoImageToVideoPost) UnmarshalJSON(data []byte) error {
+func (b *BodyGenImageToVideo) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetImage() BodyImageToVideoImageToVideoPostImage {
+func (o *BodyGenImageToVideo) GetImage() BodyGenImageToVideoImage {
 	if o == nil {
-		return BodyImageToVideoImageToVideoPostImage{}
+		return BodyGenImageToVideoImage{}
 	}
 	return o.Image
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetModelID() *string {
+func (o *BodyGenImageToVideo) GetModelID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ModelID
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetHeight() *int64 {
+func (o *BodyGenImageToVideo) GetHeight() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Height
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetWidth() *int64 {
+func (o *BodyGenImageToVideo) GetWidth() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Width
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetFps() *int64 {
+func (o *BodyGenImageToVideo) GetFps() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Fps
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetMotionBucketID() *int64 {
+func (o *BodyGenImageToVideo) GetMotionBucketID() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.MotionBucketID
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetNoiseAugStrength() *float64 {
+func (o *BodyGenImageToVideo) GetNoiseAugStrength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.NoiseAugStrength
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetSafetyCheck() *bool {
+func (o *BodyGenImageToVideo) GetSafetyCheck() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.SafetyCheck
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetSeed() *int64 {
+func (o *BodyGenImageToVideo) GetSeed() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Seed
 }
 
-func (o *BodyImageToVideoImageToVideoPost) GetNumInferenceSteps() *int64 {
+func (o *BodyGenImageToVideo) GetNumInferenceSteps() *int64 {
 	if o == nil {
 		return nil
 	}

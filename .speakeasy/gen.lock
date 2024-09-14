@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 98621ff3-f200-4a5c-9c69-bc1fe845e39c
 management:
-  docChecksum: 57e99cb8e6e8b32242245c05aacb18c7
-  docVersion: v0.2.0
-  speakeasyVersion: 1.396.6
-  generationVersion: 2.415.6
-  releaseVersion: 0.2.0
-  configChecksum: 31041836967656151854b3e329d03919
+  docChecksum: 5649b2692e9b9f3c1065851a47fbba06
+  docVersion: v0.5.0
+  speakeasyVersion: 1.396.9
+  generationVersion: 2.415.7
+  releaseVersion: 0.3.0
+  configChecksum: ed5d7d075ec9eccb6474a8affc01b5fa
   repoURL: https://github.com/livepeer/livepeer-ai-go.git
   installationURL: https://github.com/livepeer/livepeer-ai-go
 features:
@@ -22,6 +22,7 @@ features:
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.2
     intellisenseMarkdownSupport: 0.1.0
+    nameOverrides: 2.81.2
     responseFormat: 0.1.2
     retries: 2.83.0
     sdkHooks: 0.1.0
@@ -33,11 +34,11 @@ generatedFiles:
   - .devcontainer/setup.sh
   - .gitattributes
   - /models/components/apierror.go
-  - /models/components/bodyaudiototextaudiototextpost.go
-  - /models/components/bodyimagetoimageimagetoimagepost.go
-  - /models/components/bodyimagetovideoimagetovideopost.go
-  - /models/components/bodysegmentanything2segmentanything2post.go
-  - /models/components/bodyupscaleupscalepost.go
+  - /models/components/bodygenaudiototext.go
+  - /models/components/bodygenimagetoimage.go
+  - /models/components/bodygenimagetovideo.go
+  - /models/components/bodygensegmentanything2.go
+  - /models/components/bodygenupscale.go
   - /models/components/chunk.go
   - /models/components/httpmetadata.go
   - /models/components/imageresponse.go
@@ -48,26 +49,26 @@ generatedFiles:
   - /models/components/texttoimageparams.go
   - /models/components/validationerror.go
   - /models/components/videoresponse.go
-  - /models/operations/audiototext.go
-  - /models/operations/imagetoimage.go
-  - /models/operations/imagetovideo.go
-  - /models/operations/segmentanything2.go
-  - /models/operations/texttoimage.go
-  - /models/operations/upscale.go
+  - /models/operations/genaudiototext.go
+  - /models/operations/genimagetoimage.go
+  - /models/operations/genimagetovideo.go
+  - /models/operations/gensegmentanything2.go
+  - /models/operations/gentexttoimage.go
+  - /models/operations/genupscale.go
   - /models/sdkerrors/httperror.go
   - /models/sdkerrors/httpvalidationerror.go
   - CONTRIBUTING.md
   - USAGE.md
   - docs/models/components/apierror.md
   - docs/models/components/audio.md
-  - docs/models/components/bodyaudiototextaudiototextpost.md
-  - docs/models/components/bodyimagetoimageimagetoimagepost.md
-  - docs/models/components/bodyimagetovideoimagetovideopost.md
-  - docs/models/components/bodyimagetovideoimagetovideopostimage.md
-  - docs/models/components/bodysegmentanything2segmentanything2post.md
-  - docs/models/components/bodysegmentanything2segmentanything2postimage.md
-  - docs/models/components/bodyupscaleupscalepost.md
-  - docs/models/components/bodyupscaleupscalepostimage.md
+  - docs/models/components/bodygenaudiototext.md
+  - docs/models/components/bodygenimagetoimage.md
+  - docs/models/components/bodygenimagetovideo.md
+  - docs/models/components/bodygenimagetovideoimage.md
+  - docs/models/components/bodygensegmentanything2.md
+  - docs/models/components/bodygensegmentanything2image.md
+  - docs/models/components/bodygenupscale.md
+  - docs/models/components/bodygenupscaleimage.md
   - docs/models/components/chunk.md
   - docs/models/components/httpmetadata.md
   - docs/models/components/image.md
@@ -80,14 +81,15 @@ generatedFiles:
   - docs/models/components/texttoimageparams.md
   - docs/models/components/validationerror.md
   - docs/models/components/videoresponse.md
-  - docs/models/operations/audiototextresponse.md
-  - docs/models/operations/imagetoimageresponse.md
-  - docs/models/operations/imagetovideoresponse.md
-  - docs/models/operations/segmentanything2response.md
-  - docs/models/operations/texttoimageresponse.md
-  - docs/models/operations/upscaleresponse.md
+  - docs/models/operations/genaudiototextresponse.md
+  - docs/models/operations/genimagetoimageresponse.md
+  - docs/models/operations/genimagetovideoresponse.md
+  - docs/models/operations/gensegmentanything2response.md
+  - docs/models/operations/gentexttoimageresponse.md
+  - docs/models/operations/genupscaleresponse.md
   - docs/models/sdkerrors/httperror.md
   - docs/models/sdkerrors/httpvalidationerror.md
+  - generate.go
   - go.mod
   - internal/hooks/hooks.go
   - internal/utils/contenttype.go
@@ -162,6 +164,66 @@ examples:
         "422": {}
   segment_anything_2:
     speakeasy-default-segment-anything-2:
+      requestBody:
+        multipart/form-data: {"image": {}}
+      responses:
+        "200":
+          application/json: {"masks": "<value>", "scores": "<value>", "logits": "<value>"}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genTextToImage:
+    speakeasy-default-gen-text-to-image:
+      requestBody:
+        application/json: {"prompt": "<value>"}
+      responses:
+        "200":
+          application/json: {"images": []}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genImageToImage:
+    speakeasy-default-gen-image-to-image:
+      requestBody:
+        multipart/form-data: {"prompt": "<value>", "image": {}}
+      responses:
+        "200":
+          application/json: {"images": []}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genImageToVideo:
+    speakeasy-default-gen-image-to-video:
+      requestBody:
+        multipart/form-data: {"image": {}}
+      responses:
+        "200":
+          application/json: {"images": []}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genUpscale:
+    speakeasy-default-gen-upscale:
+      requestBody:
+        multipart/form-data: {"prompt": "<value>", "image": {}}
+      responses:
+        "200":
+          application/json: {"images": []}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genAudioToText:
+    speakeasy-default-gen-audio-to-text:
+      requestBody:
+        multipart/form-data: {"audio": {}}
+      responses:
+        "200":
+          application/json: {"text": "<value>", "chunks": []}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genSegmentAnything2:
+    speakeasy-default-gen-segment-anything2:
       requestBody:
         multipart/form-data: {"image": {}}
       responses:

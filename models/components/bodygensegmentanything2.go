@@ -6,29 +6,29 @@ import (
 	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
-type BodySegmentAnything2SegmentAnything2PostImage struct {
+type BodyGenSegmentAnything2Image struct {
 	FileName string `multipartForm:"name=image"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
 
-func (o *BodySegmentAnything2SegmentAnything2PostImage) GetFileName() string {
+func (o *BodyGenSegmentAnything2Image) GetFileName() string {
 	if o == nil {
 		return ""
 	}
 	return o.FileName
 }
 
-func (o *BodySegmentAnything2SegmentAnything2PostImage) GetContent() any {
+func (o *BodyGenSegmentAnything2Image) GetContent() any {
 	if o == nil {
 		return nil
 	}
 	return o.Content
 }
 
-type BodySegmentAnything2SegmentAnything2Post struct {
+type BodyGenSegmentAnything2 struct {
 	// Image to segment.
-	Image BodySegmentAnything2SegmentAnything2PostImage `multipartForm:"file"`
+	Image BodyGenSegmentAnything2Image `multipartForm:"file"`
 	// Hugging Face model ID used for image generation.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// Nx2 array of point prompts to the model, where each point is in (X,Y) in pixels.
@@ -47,74 +47,74 @@ type BodySegmentAnything2SegmentAnything2Post struct {
 	NormalizeCoords *bool `default:"true" multipartForm:"name=normalize_coords"`
 }
 
-func (b BodySegmentAnything2SegmentAnything2Post) MarshalJSON() ([]byte, error) {
+func (b BodyGenSegmentAnything2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(b, "", false)
 }
 
-func (b *BodySegmentAnything2SegmentAnything2Post) UnmarshalJSON(data []byte) error {
+func (b *BodyGenSegmentAnything2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetImage() BodySegmentAnything2SegmentAnything2PostImage {
+func (o *BodyGenSegmentAnything2) GetImage() BodyGenSegmentAnything2Image {
 	if o == nil {
-		return BodySegmentAnything2SegmentAnything2PostImage{}
+		return BodyGenSegmentAnything2Image{}
 	}
 	return o.Image
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetModelID() *string {
+func (o *BodyGenSegmentAnything2) GetModelID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ModelID
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetPointCoords() *string {
+func (o *BodyGenSegmentAnything2) GetPointCoords() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PointCoords
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetPointLabels() *string {
+func (o *BodyGenSegmentAnything2) GetPointLabels() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PointLabels
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetBox() *string {
+func (o *BodyGenSegmentAnything2) GetBox() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Box
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetMaskInput() *string {
+func (o *BodyGenSegmentAnything2) GetMaskInput() *string {
 	if o == nil {
 		return nil
 	}
 	return o.MaskInput
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetMultimaskOutput() *bool {
+func (o *BodyGenSegmentAnything2) GetMultimaskOutput() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.MultimaskOutput
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetReturnLogits() *bool {
+func (o *BodyGenSegmentAnything2) GetReturnLogits() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReturnLogits
 }
 
-func (o *BodySegmentAnything2SegmentAnything2Post) GetNormalizeCoords() *bool {
+func (o *BodyGenSegmentAnything2) GetNormalizeCoords() *bool {
 	if o == nil {
 		return nil
 	}
