@@ -5,7 +5,7 @@ sources:
         inputs:
             - location: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.yaml
         registry:
-            location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/livepeerai-oas
+            location: registry.speakeasyapi.dev/livepeer/livepeer-ai/livepeerai-oas
 targets:
     livepeerai-go:
         target: go
@@ -13,4 +13,4 @@ targets:
         codeSamples:
             output: codeSamples.yaml
             registry:
-                location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/code-samples-go-livepeerai-go
+                location: registry.speakeasyapi.dev/livepeer/livepeer-ai/code-samples-go-livepeerai-go
