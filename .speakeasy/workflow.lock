@@ -1,27 +1,24 @@
-speakeasyVersion: 1.383.2
+speakeasyVersion: 1.398.0
 sources:
     livepeerai-OAS:
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:ca4fa080aff59f207d0e9cb56f9d31e863840b893c31c5fea500129510babf9f
-        sourceBlobDigest: sha256:6062f3b4ac6538ff6f4465a264f1806261e6509c5581be6c2189430acb21b315
+        sourceRevisionDigest: sha256:43cf0ae12df6c7eaefaf51d7dc7aa9264f153a8b7ecd28563cf938eb4d382170
+        sourceBlobDigest: sha256:726bd47684eeb00a5a351e77d612da793deb9a236281df00a64c7109b741938c
         tags:
             - latest
-            - main
 targets:
     livepeerai:
         source: livepeerai-OAS
         sourceNamespace: livepeerai-oas
         sourceRevisionDigest: sha256:d5d5448674c5945b56ea82b32a01c9bb5bfa977ce0db559f609135346f028189
         sourceBlobDigest: sha256:48b0747b8e9a3740e70354e85817a677ea764896e39a5c31ec3060fd570e555f
-        outLocation: /home/ricks/development/livepeer/ai/livepeer-ai-go
     livepeerai-go:
         source: livepeerai-OAS
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:ca4fa080aff59f207d0e9cb56f9d31e863840b893c31c5fea500129510babf9f
-        sourceBlobDigest: sha256:6062f3b4ac6538ff6f4465a264f1806261e6509c5581be6c2189430acb21b315
+        sourceRevisionDigest: sha256:43cf0ae12df6c7eaefaf51d7dc7aa9264f153a8b7ecd28563cf938eb4d382170
+        sourceBlobDigest: sha256:726bd47684eeb00a5a351e77d612da793deb9a236281df00a64c7109b741938c
         codeSamplesNamespace: code-samples-go-livepeerai-go
-        codeSamplesRevisionDigest: sha256:b1a5c5ce3dfd75cf80425b54803a2ecb634d92c12e5deacec8b895159890f2af
-        outLocation: /github/workspace/repo
+        codeSamplesRevisionDigest: sha256:abcc2b2c1f048b36ce12039304e5658920491c5fd95f9e00f6478be5431bf465
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -30,7 +27,7 @@ workflow:
             inputs:
                 - location: https://raw.githubusercontent.com/livepeer/ai-worker/main/runner/gateway.openapi.yaml
             registry:
-                location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/livepeerai-oas
+                location: registry.speakeasyapi.dev/livepeer/livepeer-ai/livepeerai-oas
     targets:
         livepeerai-go:
             target: go
@@ -38,4 +35,4 @@ workflow:
             codeSamples:
                 output: codeSamples.yaml
                 registry:
-                    location: registry.speakeasyapi.dev/livepeer-8mq/livepeer-ai/code-samples-go-livepeerai-go
+                    location: registry.speakeasyapi.dev/livepeer/livepeer-ai/code-samples-go-livepeerai-go
