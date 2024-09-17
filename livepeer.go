@@ -70,25 +70,25 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], nil
 }
 
-// LivepeerAI - Livepeer AI Runner: An application to run AI pipelines
-type LivepeerAI struct {
+// Livepeer AI Runner: An application to run AI pipelines
+type Livepeer struct {
 	Generate *Generate
 
 	sdkConfiguration sdkConfiguration
 }
 
-type SDKOption func(*LivepeerAI)
+type SDKOption func(*Livepeer)
 
 // WithServerURL allows the overriding of the default server URL
 func WithServerURL(serverURL string) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 }
 
 // WithTemplatedServerURL allows the overriding of the default server URL with a templated URL populated with the provided parameters
 func WithTemplatedServerURL(serverURL string, params map[string]string) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		if params != nil {
 			serverURL = utils.ReplaceParameters(serverURL, params)
 		}
@@ -99,7 +99,7 @@ func WithTemplatedServerURL(serverURL string, params map[string]string) SDKOptio
 
 // WithServerIndex allows the overriding of the default server by index
 func WithServerIndex(serverIndex int) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		if serverIndex < 0 || serverIndex >= len(ServerList) {
 			panic(fmt.Errorf("server index %d out of range", serverIndex))
 		}
@@ -110,14 +110,14 @@ func WithServerIndex(serverIndex int) SDKOption {
 
 // WithClient allows the overriding of the default HTTP client used by the SDK
 func WithClient(client HTTPClient) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		sdk.sdkConfiguration.Client = client
 	}
 }
 
 // WithSecurity configures the SDK to use the provided security details
 func WithSecurity(httpBearer string) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		security := components.Security{HTTPBearer: httpBearer}
 		sdk.sdkConfiguration.Security = utils.AsSecuritySource(&security)
 	}
@@ -125,7 +125,7 @@ func WithSecurity(httpBearer string) SDKOption {
 
 // WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
 func WithSecuritySource(security func(context.Context) (components.Security, error)) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
 			return security(ctx)
 		}
@@ -133,27 +133,27 @@ func WithSecuritySource(security func(context.Context) (components.Security, err
 }
 
 func WithRetryConfig(retryConfig retry.Config) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		sdk.sdkConfiguration.RetryConfig = &retryConfig
 	}
 }
 
 // WithTimeout Optional request timeout applied to each operation
 func WithTimeout(timeout time.Duration) SDKOption {
-	return func(sdk *LivepeerAI) {
+	return func(sdk *Livepeer) {
 		sdk.sdkConfiguration.Timeout = &timeout
 	}
 }
 
 // New creates a new instance of the SDK with the provided options
-func New(opts ...SDKOption) *LivepeerAI {
-	sdk := &LivepeerAI{
+func New(opts ...SDKOption) *Livepeer {
+	sdk := &Livepeer{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "v0.5.0",
-			SDKVersion:        "0.3.0",
-			GenVersion:        "2.415.7",
-			UserAgent:         "speakeasy-sdk/go 0.3.0 2.415.7 v0.5.0 github.com/livepeer/livepeer-ai-go",
+			SDKVersion:        "0.4.0",
+			GenVersion:        "2.415.8",
+			UserAgent:         "speakeasy-sdk/go 0.4.0 2.415.8 v0.5.0 github.com/livepeer/livepeer-ai-go",
 			Hooks:             hooks.New(),
 		},
 	}
