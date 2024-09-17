@@ -3,10 +3,10 @@ id: 98621ff3-f200-4a5c-9c69-bc1fe845e39c
 management:
   docChecksum: 5649b2692e9b9f3c1065851a47fbba06
   docVersion: v0.5.0
-  speakeasyVersion: 1.396.9
-  generationVersion: 2.415.7
-  releaseVersion: 0.3.0
-  configChecksum: ed5d7d075ec9eccb6474a8affc01b5fa
+  speakeasyVersion: 1.398.1
+  generationVersion: 2.415.8
+  releaseVersion: 0.4.0
+  configChecksum: ac3dd6cddc96b972e6ca8108e686e6a7
   repoURL: https://github.com/livepeer/livepeer-ai-go.git
   installationURL: https://github.com/livepeer/livepeer-ai-go
 features:
@@ -15,7 +15,6 @@ features:
     constsAndDefaults: 0.1.6
     core: 3.5.8
     defaultEnabledRetries: 0.2.0
-    devContainers: 2.90.0
     envVarSecurityUsage: 0.3.1
     globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
@@ -29,9 +28,6 @@ features:
     unions: 2.85.9
     uploadStreams: 0.1.0
 generatedFiles:
-  - .devcontainer/README.md
-  - .devcontainer/devcontainer.json
-  - .devcontainer/setup.sh
   - .gitattributes
   - /models/components/apierror.go
   - /models/components/bodygenaudiototext.go
@@ -102,7 +98,7 @@ generatedFiles:
   - internal/utils/retries.go
   - internal/utils/security.go
   - internal/utils/utils.go
-  - livepeerai.go
+  - livepeer.go
   - models/operations/options.go
   - models/sdkerrors/sdkerror.go
   - retry/config.go
