@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 98621ff3-f200-4a5c-9c69-bc1fe845e39c
 management:
-  docChecksum: 5649b2692e9b9f3c1065851a47fbba06
+  docChecksum: 4a28bceb165adf1c1dd97bbc8fe41a27
   docVersion: v0.5.0
-  speakeasyVersion: 1.398.1
-  generationVersion: 2.415.8
-  releaseVersion: 0.4.0
-  configChecksum: ac3dd6cddc96b972e6ca8108e686e6a7
+  speakeasyVersion: 1.401.2
+  generationVersion: 2.421.3
+  releaseVersion: 0.4.1
+  configChecksum: 03ee27e9ab450aa2c6a8f0affa474e36
   repoURL: https://github.com/livepeer/livepeer-ai-go.git
   installationURL: https://github.com/livepeer/livepeer-ai-go
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.8
+    core: 3.5.9
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.1
     globalSecurity: 2.82.10
