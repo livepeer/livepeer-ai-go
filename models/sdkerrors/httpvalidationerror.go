@@ -7,7 +7,6 @@ import (
 	"github.com/livepeer/livepeer-ai-go/models/components"
 )
 
-// HTTPValidationError - Validation Error
 type HTTPValidationError struct {
 	Detail []components.ValidationError `json:"detail,omitempty"`
 }
