@@ -1,19 +1,18 @@
 lockVersion: 2.0.0
 id: 98621ff3-f200-4a5c-9c69-bc1fe845e39c
 management:
-  docChecksum: 4a28bceb165adf1c1dd97bbc8fe41a27
-  docVersion: v0.5.0
-  speakeasyVersion: 1.401.2
-  generationVersion: 2.421.3
-  releaseVersion: 0.4.1
-  configChecksum: 03ee27e9ab450aa2c6a8f0affa474e36
+  docChecksum: 21334b8071b6c8e28a5dda229ceafd7e
+  speakeasyVersion: 1.405.6
+  generationVersion: 2.428.1
+  releaseVersion: 0.4.2
+  configChecksum: d3dbfe289ca80fa4bf7e37f2d53d1f2f
   repoURL: https://github.com/livepeer/livepeer-ai-go.git
   installationURL: https://github.com/livepeer/livepeer-ai-go
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.9
+    core: 3.5.12
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.1
     globalSecurity: 2.82.10
@@ -33,11 +32,13 @@ generatedFiles:
   - /models/components/bodygenaudiototext.go
   - /models/components/bodygenimagetoimage.go
   - /models/components/bodygenimagetovideo.go
+  - /models/components/bodygenllm.go
   - /models/components/bodygensegmentanything2.go
   - /models/components/bodygenupscale.go
   - /models/components/chunk.go
   - /models/components/httpmetadata.go
   - /models/components/imageresponse.go
+  - /models/components/llmresponse.go
   - /models/components/masksresponse.go
   - /models/components/media.go
   - /models/components/security.go
@@ -48,6 +49,7 @@ generatedFiles:
   - /models/operations/genaudiototext.go
   - /models/operations/genimagetoimage.go
   - /models/operations/genimagetovideo.go
+  - /models/operations/genllm.go
   - /models/operations/gensegmentanything2.go
   - /models/operations/gentexttoimage.go
   - /models/operations/genupscale.go
@@ -61,6 +63,7 @@ generatedFiles:
   - docs/models/components/bodygenimagetoimage.md
   - docs/models/components/bodygenimagetovideo.md
   - docs/models/components/bodygenimagetovideoimage.md
+  - docs/models/components/bodygenllm.md
   - docs/models/components/bodygensegmentanything2.md
   - docs/models/components/bodygensegmentanything2image.md
   - docs/models/components/bodygenupscale.md
@@ -69,6 +72,7 @@ generatedFiles:
   - docs/models/components/httpmetadata.md
   - docs/models/components/image.md
   - docs/models/components/imageresponse.md
+  - docs/models/components/llmresponse.md
   - docs/models/components/loc.md
   - docs/models/components/masksresponse.md
   - docs/models/components/media.md
@@ -80,6 +84,7 @@ generatedFiles:
   - docs/models/operations/genaudiototextresponse.md
   - docs/models/operations/genimagetoimageresponse.md
   - docs/models/operations/genimagetovideoresponse.md
+  - docs/models/operations/genllmresponse.md
   - docs/models/operations/gensegmentanything2response.md
   - docs/models/operations/gentexttoimageresponse.md
   - docs/models/operations/genupscaleresponse.md
@@ -225,6 +230,16 @@ examples:
       responses:
         "200":
           application/json: {"masks": "<value>", "scores": "<value>", "logits": "<value>"}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genLLM:
+    speakeasy-default-gen-LLM:
+      requestBody:
+        application/x-www-form-urlencoded: {"prompt": "<value>"}
+      responses:
+        "200":
+          application/json: {"response": "<value>", "tokens_used": 60712}
         "400":
           application/json: {"detail": {"msg": "<value>"}}
         "422": {}

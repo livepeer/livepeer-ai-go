@@ -124,6 +124,37 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/llm"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: genLLM
+          source: |-
+            package main
+
+            import(
+            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+            	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"log"
+            )
+
+            func main() {
+                s := livepeeraigo.New(
+                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+                )
+
+                ctx := context.Background()
+                res, err := s.Generate.Llm(ctx, components.BodyGenLLM{
+                    Prompt: "<value>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.LLMResponse != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/segment-anything-2"]["post"]
     update:
       x-codeSamples:
