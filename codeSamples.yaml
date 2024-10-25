@@ -84,6 +84,46 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/image-to-text"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: genImageToText
+          source: |-
+            package main
+
+            import(
+            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+            	"os"
+            	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"log"
+            )
+
+            func main() {
+                s := livepeeraigo.New(
+                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+                )
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
+                }
+
+                ctx := context.Background()
+                res, err := s.Generate.ImageToText(ctx, components.BodyGenImageToText{
+                    Image: components.BodyGenImageToTextImage{
+                        FileName: "example.file",
+                        Content: content,
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.ImageToTextResponse != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/image-to-video"]["post"]
     update:
       x-codeSamples:

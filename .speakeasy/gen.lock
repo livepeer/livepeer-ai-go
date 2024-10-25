@@ -1,18 +1,19 @@
 lockVersion: 2.0.0
 id: 98621ff3-f200-4a5c-9c69-bc1fe845e39c
 management:
-  docChecksum: 21334b8071b6c8e28a5dda229ceafd7e
-  speakeasyVersion: 1.405.6
-  generationVersion: 2.428.1
-  releaseVersion: 0.4.2
-  configChecksum: d3dbfe289ca80fa4bf7e37f2d53d1f2f
+  docChecksum: a140881cbcff74961991f5dfff13f0a0
+  docVersion: 0.0.0
+  speakeasyVersion: 1.421.2
+  generationVersion: 2.438.15
+  releaseVersion: 0.4.3
+  configChecksum: c6fd68f564c3f98964f8fd3bc391d9d4
   repoURL: https://github.com/livepeer/livepeer-ai-go.git
   installationURL: https://github.com/livepeer/livepeer-ai-go
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.12
+    core: 3.5.13
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.1
     globalSecurity: 2.82.10
@@ -31,6 +32,7 @@ generatedFiles:
   - /models/components/apierror.go
   - /models/components/bodygenaudiototext.go
   - /models/components/bodygenimagetoimage.go
+  - /models/components/bodygenimagetotext.go
   - /models/components/bodygenimagetovideo.go
   - /models/components/bodygenllm.go
   - /models/components/bodygensegmentanything2.go
@@ -38,6 +40,7 @@ generatedFiles:
   - /models/components/chunk.go
   - /models/components/httpmetadata.go
   - /models/components/imageresponse.go
+  - /models/components/imagetotextresponse.go
   - /models/components/llmresponse.go
   - /models/components/masksresponse.go
   - /models/components/media.go
@@ -48,6 +51,7 @@ generatedFiles:
   - /models/components/videoresponse.go
   - /models/operations/genaudiototext.go
   - /models/operations/genimagetoimage.go
+  - /models/operations/genimagetotext.go
   - /models/operations/genimagetovideo.go
   - /models/operations/genllm.go
   - /models/operations/gensegmentanything2.go
@@ -61,6 +65,8 @@ generatedFiles:
   - docs/models/components/audio.md
   - docs/models/components/bodygenaudiototext.md
   - docs/models/components/bodygenimagetoimage.md
+  - docs/models/components/bodygenimagetotext.md
+  - docs/models/components/bodygenimagetotextimage.md
   - docs/models/components/bodygenimagetovideo.md
   - docs/models/components/bodygenimagetovideoimage.md
   - docs/models/components/bodygenllm.md
@@ -72,6 +78,7 @@ generatedFiles:
   - docs/models/components/httpmetadata.md
   - docs/models/components/image.md
   - docs/models/components/imageresponse.md
+  - docs/models/components/imagetotextresponse.md
   - docs/models/components/llmresponse.md
   - docs/models/components/loc.md
   - docs/models/components/masksresponse.md
@@ -83,6 +90,7 @@ generatedFiles:
   - docs/models/components/videoresponse.md
   - docs/models/operations/genaudiototextresponse.md
   - docs/models/operations/genimagetoimageresponse.md
+  - docs/models/operations/genimagetotextresponse.md
   - docs/models/operations/genimagetovideoresponse.md
   - docs/models/operations/genllmresponse.md
   - docs/models/operations/gensegmentanything2response.md
@@ -240,6 +248,16 @@ examples:
       responses:
         "200":
           application/json: {"response": "<value>", "tokens_used": 60712}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genImageToText:
+    speakeasy-default-gen-image-to-text:
+      requestBody:
+        multipart/form-data: {"image": {}}
+      responses:
+        "200":
+          application/json: {"text": "<value>"}
         "400":
           application/json: {"detail": {"msg": "<value>"}}
         "422": {}
