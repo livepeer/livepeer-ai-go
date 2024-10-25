@@ -150,10 +150,10 @@ func New(opts ...SDKOption) *Livepeer {
 	sdk := &Livepeer{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
-			OpenAPIDocVersion: "",
-			SDKVersion:        "0.4.2",
-			GenVersion:        "2.428.1",
-			UserAgent:         "speakeasy-sdk/go 0.4.2 2.428.1  github.com/livepeer/livepeer-ai-go",
+			OpenAPIDocVersion: "0.0.0",
+			SDKVersion:        "0.4.3",
+			GenVersion:        "2.438.15",
+			UserAgent:         "speakeasy-sdk/go 0.4.3 2.438.15 0.0.0 github.com/livepeer/livepeer-ai-go",
 			Hooks:             hooks.New(),
 		},
 	}

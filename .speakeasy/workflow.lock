@@ -1,9 +1,9 @@
-speakeasyVersion: 1.405.6
+speakeasyVersion: 1.421.2
 sources:
     livepeerai-OAS:
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:ce56b1741c39f98c5d10419ed7aa8c1cf07891fbae7603bffaf06e9d26887f6f
-        sourceBlobDigest: sha256:1381f76cad0ec28b51d5559fdf87a0b14f39e2946fe25e0c21c0b8b0fe42cf99
+        sourceRevisionDigest: sha256:42e3e9a25622d367c70f1f200afa559ec6a2c4d9b65014dd76da56f8e1beb487
+        sourceBlobDigest: sha256:ad0b2e92bea306b60b1929309669cb1c3ca574325bb0ab4a2e44949fc8249a9f
         tags:
             - latest
             - main
@@ -16,10 +16,10 @@ targets:
     livepeerai-go:
         source: livepeerai-OAS
         sourceNamespace: livepeerai-oas
-        sourceRevisionDigest: sha256:ce56b1741c39f98c5d10419ed7aa8c1cf07891fbae7603bffaf06e9d26887f6f
-        sourceBlobDigest: sha256:1381f76cad0ec28b51d5559fdf87a0b14f39e2946fe25e0c21c0b8b0fe42cf99
+        sourceRevisionDigest: sha256:42e3e9a25622d367c70f1f200afa559ec6a2c4d9b65014dd76da56f8e1beb487
+        sourceBlobDigest: sha256:ad0b2e92bea306b60b1929309669cb1c3ca574325bb0ab4a2e44949fc8249a9f
         codeSamplesNamespace: code-samples-go-livepeerai-go
-        codeSamplesRevisionDigest: sha256:3d64aa7d5bea2f7f5de1d27ed652fea89c378343d47c113ee35aca504f954ecd
+        codeSamplesRevisionDigest: sha256:36bfad51481a38664404f8053d44846222f0d7fa53c6f1462a5bd1a1e284bd08
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
