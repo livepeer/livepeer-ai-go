@@ -31,6 +31,8 @@ type BodyGenAudioToText struct {
 	Audio Audio `multipartForm:"file"`
 	// Hugging Face model ID used for transcription.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
+	// Return timestamps for the transcribed text. Supported values: 'sentence', 'word', or a string boolean ('true' or 'false'). Default is 'true' ('sentence'). 'false' means no timestamps. 'word' means word-based timestamps.
+	ReturnTimestamps *string `default:"true" multipartForm:"name=return_timestamps"`
 }
 
 func (b BodyGenAudioToText) MarshalJSON() ([]byte, error) {
@@ -56,4 +58,11 @@ func (o *BodyGenAudioToText) GetModelID() *string {
 		return nil
 	}
 	return o.ModelID
+}
+
+func (o *BodyGenAudioToText) GetReturnTimestamps() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ReturnTimestamps
 }
