@@ -7,5 +7,5 @@ A chunk of text with a timestamp.
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `Timestamp`                 | []*any*                     | :heavy_check_mark:          | The timestamp of the chunk. |
+| `Timestamp`                 | []*float64*                 | :heavy_check_mark:          | The timestamp of the chunk. |
 | `Text`                      | *string*                    | :heavy_check_mark:          | The text of the chunk.      |

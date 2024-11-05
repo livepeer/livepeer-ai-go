@@ -1,21 +1,21 @@
 lockVersion: 2.0.0
 id: 98621ff3-f200-4a5c-9c69-bc1fe845e39c
 management:
-  docChecksum: a140881cbcff74961991f5dfff13f0a0
+  docChecksum: 2f29b26e29f07ac960b8601fb85442d0
   docVersion: 0.0.0
-  speakeasyVersion: 1.421.2
-  generationVersion: 2.438.15
-  releaseVersion: 0.4.3
-  configChecksum: c6fd68f564c3f98964f8fd3bc391d9d4
+  speakeasyVersion: 1.426.0
+  generationVersion: 2.446.5
+  releaseVersion: 0.5.0
+  configChecksum: 45d55d1094ccf9b13bfa1eb4a0da336e
   repoURL: https://github.com/livepeer/livepeer-ai-go.git
   installationURL: https://github.com/livepeer/livepeer-ai-go
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.13
+    core: 3.5.15
     defaultEnabledRetries: 0.2.0
-    envVarSecurityUsage: 0.3.1
+    envVarSecurityUsage: 0.3.2
     globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -25,11 +25,13 @@ features:
     responseFormat: 0.1.2
     retries: 2.83.0
     sdkHooks: 0.1.0
+    tests: 0.6.0
     unions: 2.85.9
     uploadStreams: 0.1.0
 generatedFiles:
   - .gitattributes
   - /models/components/apierror.go
+  - /models/components/audioresponse.go
   - /models/components/bodygenaudiototext.go
   - /models/components/bodygenimagetoimage.go
   - /models/components/bodygenimagetotext.go
@@ -41,21 +43,27 @@ generatedFiles:
   - /models/components/httpmetadata.go
   - /models/components/imageresponse.go
   - /models/components/imagetotextresponse.go
+  - /models/components/livevideotovideoparams.go
+  - /models/components/livevideotovideoresponse.go
   - /models/components/llmresponse.go
   - /models/components/masksresponse.go
   - /models/components/media.go
+  - /models/components/mediaurl.go
   - /models/components/security.go
   - /models/components/textresponse.go
   - /models/components/texttoimageparams.go
+  - /models/components/texttospeechparams.go
   - /models/components/validationerror.go
   - /models/components/videoresponse.go
   - /models/operations/genaudiototext.go
   - /models/operations/genimagetoimage.go
   - /models/operations/genimagetotext.go
   - /models/operations/genimagetovideo.go
+  - /models/operations/genlivevideotovideo.go
   - /models/operations/genllm.go
   - /models/operations/gensegmentanything2.go
   - /models/operations/gentexttoimage.go
+  - /models/operations/gentexttospeech.go
   - /models/operations/genupscale.go
   - /models/sdkerrors/httperror.go
   - /models/sdkerrors/httpvalidationerror.go
@@ -63,6 +71,7 @@ generatedFiles:
   - USAGE.md
   - docs/models/components/apierror.md
   - docs/models/components/audio.md
+  - docs/models/components/audioresponse.md
   - docs/models/components/bodygenaudiototext.md
   - docs/models/components/bodygenimagetoimage.md
   - docs/models/components/bodygenimagetotext.md
@@ -79,22 +88,29 @@ generatedFiles:
   - docs/models/components/image.md
   - docs/models/components/imageresponse.md
   - docs/models/components/imagetotextresponse.md
+  - docs/models/components/livevideotovideoparams.md
+  - docs/models/components/livevideotovideoresponse.md
   - docs/models/components/llmresponse.md
   - docs/models/components/loc.md
   - docs/models/components/masksresponse.md
   - docs/models/components/media.md
+  - docs/models/components/mediaurl.md
+  - docs/models/components/params.md
   - docs/models/components/security.md
   - docs/models/components/textresponse.md
   - docs/models/components/texttoimageparams.md
+  - docs/models/components/texttospeechparams.md
   - docs/models/components/validationerror.md
   - docs/models/components/videoresponse.md
   - docs/models/operations/genaudiototextresponse.md
   - docs/models/operations/genimagetoimageresponse.md
   - docs/models/operations/genimagetotextresponse.md
   - docs/models/operations/genimagetovideoresponse.md
+  - docs/models/operations/genlivevideotovideoresponse.md
   - docs/models/operations/genllmresponse.md
   - docs/models/operations/gensegmentanything2response.md
   - docs/models/operations/gentexttoimageresponse.md
+  - docs/models/operations/gentexttospeechresponse.md
   - docs/models/operations/genupscaleresponse.md
   - docs/models/sdkerrors/httperror.md
   - docs/models/sdkerrors/httpvalidationerror.md
@@ -258,6 +274,24 @@ examples:
       responses:
         "200":
           application/json: {"text": "<value>"}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genLiveVideoToVideo:
+    speakeasy-default-gen-live-video-to-video:
+      requestBody:
+        application/json: {"subscribe_url": "https://soulful-lava.org/", "publish_url": "https://vain-tabletop.biz"}
+      responses:
+        "200":
+          application/json: {"subscribe_url": "https://vain-kiss.name", "publish_url": "https://frail-duffel.com"}
+        "400":
+          application/json: {"detail": {"msg": "<value>"}}
+        "422": {}
+  genTextToSpeech:
+    speakeasy-default-gen-text-to-speech:
+      responses:
+        "200":
+          application/json: {"audio": {"url": "https://accurate-parsnip.net/"}}
         "400":
           application/json: {"detail": {"msg": "<value>"}}
         "422": {}

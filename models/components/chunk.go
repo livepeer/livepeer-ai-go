@@ -5,14 +5,14 @@ package components
 // Chunk - A chunk of text with a timestamp.
 type Chunk struct {
 	// The timestamp of the chunk.
-	Timestamp []any `json:"timestamp"`
+	Timestamp []float64 `json:"timestamp"`
 	// The text of the chunk.
 	Text string `json:"text"`
 }
 
-func (o *Chunk) GetTimestamp() []any {
+func (o *Chunk) GetTimestamp() []float64 {
 	if o == nil {
-		return []any{}
+		return []float64{}
 	}
 	return o.Timestamp
 }
