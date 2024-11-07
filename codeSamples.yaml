@@ -164,6 +164,38 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/live-video-to-video"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: genLiveVideoToVideo
+          source: |-
+            package main
+
+            import(
+            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+            	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"log"
+            )
+
+            func main() {
+                s := livepeeraigo.New(
+                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+                )
+
+                ctx := context.Background()
+                res, err := s.Generate.LiveVideoToVideo(ctx, components.LiveVideoToVideoParams{
+                    SubscribeURL: "https://soulful-lava.org/",
+                    PublishURL: "https://vain-tabletop.biz",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.LiveVideoToVideoResponse != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/llm"]["post"]
     update:
       x-codeSamples:
@@ -263,6 +295,35 @@ actions:
                     log.Fatal(err)
                 }
                 if res.ImageResponse != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/text-to-speech"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: genTextToSpeech
+          source: |-
+            package main
+
+            import(
+            	livepeeraigo "github.com/livepeer/livepeer-ai-go"
+            	"context"
+            	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"log"
+            )
+
+            func main() {
+                s := livepeeraigo.New(
+                    livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+                )
+
+                ctx := context.Background()
+                res, err := s.Generate.TextToSpeech(ctx, components.TextToSpeechParams{})
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.AudioResponse != nil {
                     // handle response
                 }
             }
