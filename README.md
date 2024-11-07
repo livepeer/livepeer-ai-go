@@ -308,12 +308,6 @@ func main() {
 ```
 <!-- End Authentication [security] -->
 
-<!-- Start Special Types [types] -->
-## Special Types
-
-
-<!-- End Special Types [types] -->
-
 <!-- Start Summary [summary] -->
 ## Summary
 
@@ -331,7 +325,6 @@ Livepeer AI Runner: An application to run AI pipelines
 * [Server Selection](#server-selection)
 * [Custom HTTP Client](#custom-http-client)
 * [Authentication](#authentication)
-* [Special Types](#special-types)
 <!-- End Table of Contents [toc] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
