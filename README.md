@@ -104,11 +104,11 @@ By Default, an API error will return `sdkerrors.SDKError`. When custom error res
 
 For example, the `TextToImage` function may return the following errors:
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
-| sdkerrors.HTTPValidationError | 422                           | application/json              |
-| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
+| Error Type                    | Status Code   | Content Type     |
+| ----------------------------- | ------------- | ---------------- |
+| sdkerrors.HTTPError           | 400, 401, 500 | application/json |
+| sdkerrors.HTTPValidationError | 422           | application/json |
+| sdkerrors.SDKError            | 4XX, 5XX      | \*/\*            |
 
 ### Example
 
@@ -163,12 +163,12 @@ func main() {
 
 ### Select Server by Index
 
-You can override the default server globally using the `WithServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally using the `WithServerIndex(serverIndex int)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://dream-gateway.livepeer.cloud` | None |
-| 1 | `https://livepeer.studio/api/beta/generate` | None |
+| #   | Server                                      |
+| --- | ------------------------------------------- |
+| 0   | `https://dream-gateway.livepeer.cloud`      |
+| 1   | `https://livepeer.studio/api/beta/generate` |
 
 #### Example
 
@@ -202,10 +202,9 @@ func main() {
 
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
+The default server can also be overridden globally using the `WithServerURL(serverURL string)` option when initializing the SDK client instance. For example:
 ```go
 package main
 
@@ -273,9 +272,9 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type         | Scheme       |
-| ------------ | ------------ | ------------ |
-| `HTTPBearer` | http         | HTTP Bearer  |
+| Name         | Type | Scheme      |
+| ------------ | ---- | ----------- |
+| `HTTPBearer` | http | HTTP Bearer |
 
 You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
 ```go
@@ -316,15 +315,16 @@ Livepeer AI Runner: An application to run AI pipelines
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Livepeer AI Golang Client Library](#livepeer-ai-golang-client-library)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
