@@ -2,12 +2,31 @@
 
 package components
 
+import (
+	"github.com/livepeer/livepeer-ai-go/internal/utils"
+)
+
 // LiveVideoToVideoResponse - Response model for live video-to-video generation.
 type LiveVideoToVideoResponse struct {
 	// Source URL of the incoming stream to subscribe to
 	SubscribeURL string `json:"subscribe_url"`
 	// Destination URL of the outgoing stream to publish to
 	PublishURL string `json:"publish_url"`
+	// URL for updating the live video-to-video generation
+	ControlURL *string `default:"" json:"control_url"`
+	// URL for subscribing to events for pipeline status and logs
+	EventsURL *string `default:"" json:"events_url"`
+}
+
+func (l LiveVideoToVideoResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LiveVideoToVideoResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LiveVideoToVideoResponse) GetSubscribeURL() string {
@@ -22,4 +41,18 @@ func (o *LiveVideoToVideoResponse) GetPublishURL() string {
 		return ""
 	}
 	return o.PublishURL
+}
+
+func (o *LiveVideoToVideoResponse) GetControlURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ControlURL
+}
+
+func (o *LiveVideoToVideoResponse) GetEventsURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EventsURL
 }
