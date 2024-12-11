@@ -174,8 +174,8 @@ actions:
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"context"
             	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"context"
             	"log"
             )
 
@@ -206,8 +206,8 @@ actions:
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"context"
             	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"context"
             	"log"
             )
 
@@ -277,8 +277,8 @@ actions:
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"context"
             	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"context"
             	"log"
             )
 
@@ -308,8 +308,8 @@ actions:
 
             import(
             	livepeeraigo "github.com/livepeer/livepeer-ai-go"
-            	"context"
             	"github.com/livepeer/livepeer-ai-go/models/components"
+            	"context"
             	"log"
             )
 
