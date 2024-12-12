@@ -6,7 +6,7 @@ import (
 	"github.com/livepeer/livepeer-ai-go/internal/utils"
 )
 
-// Params - Initial parameters for the model.
+// Params - Initial parameters for the pipeline.
 type Params struct {
 }
 
@@ -15,9 +15,13 @@ type LiveVideoToVideoParams struct {
 	SubscribeURL string `json:"subscribe_url"`
 	// Destination URL of the outgoing stream to publish.
 	PublishURL string `json:"publish_url"`
-	// Hugging Face model ID used for image generation.
+	// URL for subscribing via Trickle protocol for updates in the live video-to-video generation params.
+	ControlURL *string `default:"" json:"control_url"`
+	// URL for publishing events via Trickle protocol for pipeline status and logs.
+	EventsURL *string `default:"" json:"events_url"`
+	// Name of the pipeline to run in the live video to video job. Notice that this is named model_id for consistency with other routes, but it does not refer to a Hugging Face model ID. The exact model(s) depends on the pipeline implementation and might be configurable via the `params` argument.
 	ModelID *string `default:"" json:"model_id"`
-	// Initial parameters for the model.
+	// Initial parameters for the pipeline.
 	Params *Params `json:"params,omitempty"`
 }
 
@@ -44,6 +48,20 @@ func (o *LiveVideoToVideoParams) GetPublishURL() string {
 		return ""
 	}
 	return o.PublishURL
+}
+
+func (o *LiveVideoToVideoParams) GetControlURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ControlURL
+}
+
+func (o *LiveVideoToVideoParams) GetEventsURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EventsURL
 }
 
 func (o *LiveVideoToVideoParams) GetModelID() *string {
