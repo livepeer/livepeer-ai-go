@@ -6,12 +6,12 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/cenkalti/backoff/v4"
 	"github.com/livepeer/livepeer-ai-go/internal/hooks"
 	"github.com/livepeer/livepeer-ai-go/internal/utils"
 	"github.com/livepeer/livepeer-ai-go/models/components"
 	"github.com/livepeer/livepeer-ai-go/models/operations"
 	"github.com/livepeer/livepeer-ai-go/models/sdkerrors"
+	"github.com/livepeer/livepeer-ai-go/retry"
 	"net/http"
 	"net/url"
 )
@@ -112,7 +112,11 @@ func (s *Generate) TextToImage(ctx context.Context, request components.TextToIma
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -348,7 +352,11 @@ func (s *Generate) ImageToImage(ctx context.Context, request components.BodyGenI
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -584,7 +592,11 @@ func (s *Generate) ImageToVideo(ctx context.Context, request components.BodyGenI
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -820,7 +832,11 @@ func (s *Generate) Upscale(ctx context.Context, request components.BodyGenUpscal
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -1056,7 +1072,11 @@ func (s *Generate) AudioToText(ctx context.Context, request components.BodyGenAu
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -1296,7 +1316,11 @@ func (s *Generate) SegmentAnything2(ctx context.Context, request components.Body
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -1532,7 +1556,11 @@ func (s *Generate) Llm(ctx context.Context, request components.BodyGenLLM, opts 
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -1768,7 +1796,11 @@ func (s *Generate) ImageToText(ctx context.Context, request components.BodyGenIm
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -1920,8 +1952,8 @@ func (s *Generate) ImageToText(ctx context.Context, request components.BodyGenIm
 
 }
 
-// LiveVideoToVideo - Video To Video
-// Apply video-like transformations to a provided image.
+// LiveVideoToVideo - Live Video To Video
+// Apply transformations to a live video streamed to the returned endpoints.
 func (s *Generate) LiveVideoToVideo(ctx context.Context, request components.LiveVideoToVideoParams, opts ...operations.Option) (*operations.GenLiveVideoToVideoResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -2006,7 +2038,11 @@ func (s *Generate) LiveVideoToVideo(ctx context.Context, request components.Live
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
@@ -2242,7 +2278,11 @@ func (s *Generate) TextToSpeech(ctx context.Context, request components.TextToSp
 
 			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
-				return nil, backoff.Permanent(err)
+				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
+					return nil, err
+				}
+
+				return nil, retry.Permanent(err)
 			}
 
 			httpRes, err := s.sdkConfiguration.Client.Do(req)
