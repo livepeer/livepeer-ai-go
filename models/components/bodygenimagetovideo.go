@@ -7,7 +7,7 @@ import (
 )
 
 type BodyGenImageToVideoImage struct {
-	FileName string `multipartForm:"name=image"`
+	FileName string `multipartForm:"name=fileName"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
@@ -28,7 +28,7 @@ func (o *BodyGenImageToVideoImage) GetContent() any {
 
 type BodyGenImageToVideo struct {
 	// Uploaded image to generate a video from.
-	Image BodyGenImageToVideoImage `multipartForm:"file"`
+	Image BodyGenImageToVideoImage `multipartForm:"file,name=image"`
 	// Hugging Face model ID used for video generation.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// The height in pixels of the generated video.

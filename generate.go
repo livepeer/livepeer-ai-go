@@ -48,7 +48,12 @@ func (s *Generate) TextToImage(ctx context.Context, request components.TextToIma
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/text-to-image")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -80,6 +85,10 @@ func (s *Generate) TextToImage(ctx context.Context, request components.TextToIma
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -288,7 +297,12 @@ func (s *Generate) ImageToImage(ctx context.Context, request components.BodyGenI
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/image-to-image")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -320,6 +334,10 @@ func (s *Generate) ImageToImage(ctx context.Context, request components.BodyGenI
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -528,7 +546,12 @@ func (s *Generate) ImageToVideo(ctx context.Context, request components.BodyGenI
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/image-to-video")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -560,6 +583,10 @@ func (s *Generate) ImageToVideo(ctx context.Context, request components.BodyGenI
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -768,7 +795,12 @@ func (s *Generate) Upscale(ctx context.Context, request components.BodyGenUpscal
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/upscale")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -800,6 +832,10 @@ func (s *Generate) Upscale(ctx context.Context, request components.BodyGenUpscal
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -1008,7 +1044,12 @@ func (s *Generate) AudioToText(ctx context.Context, request components.BodyGenAu
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/audio-to-text")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1040,6 +1081,10 @@ func (s *Generate) AudioToText(ctx context.Context, request components.BodyGenAu
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -1252,7 +1297,12 @@ func (s *Generate) SegmentAnything2(ctx context.Context, request components.Body
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/segment-anything-2")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1284,6 +1334,10 @@ func (s *Generate) SegmentAnything2(ctx context.Context, request components.Body
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -1472,7 +1526,7 @@ func (s *Generate) SegmentAnything2(ctx context.Context, request components.Body
 
 // Llm - LLM
 // Generate text using a language model.
-func (s *Generate) Llm(ctx context.Context, request components.BodyGenLLM, opts ...operations.Option) (*operations.GenLLMResponse, error) {
+func (s *Generate) Llm(ctx context.Context, request components.LLMRequest, opts ...operations.Option) (*operations.GenLLMResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "genLLM",
@@ -1492,13 +1546,18 @@ func (s *Generate) Llm(ctx context.Context, request components.BodyGenLLM, opts 
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/llm")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -1524,6 +1583,10 @@ func (s *Generate) Llm(ctx context.Context, request components.BodyGenLLM, opts 
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -1732,7 +1795,12 @@ func (s *Generate) ImageToText(ctx context.Context, request components.BodyGenIm
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/image-to-text")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -1764,6 +1832,10 @@ func (s *Generate) ImageToText(ctx context.Context, request components.BodyGenIm
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -1974,7 +2046,12 @@ func (s *Generate) LiveVideoToVideo(ctx context.Context, request components.Live
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/live-video-to-video")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2006,6 +2083,10 @@ func (s *Generate) LiveVideoToVideo(ctx context.Context, request components.Live
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -2214,7 +2295,12 @@ func (s *Generate) TextToSpeech(ctx context.Context, request components.TextToSp
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/text-to-speech")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -2246,6 +2332,10 @@ func (s *Generate) TextToSpeech(ctx context.Context, request components.TextToSp
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig

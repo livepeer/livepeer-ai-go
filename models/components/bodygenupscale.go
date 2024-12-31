@@ -7,7 +7,7 @@ import (
 )
 
 type BodyGenUpscaleImage struct {
-	FileName string `multipartForm:"name=image"`
+	FileName string `multipartForm:"name=fileName"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
@@ -30,7 +30,7 @@ type BodyGenUpscale struct {
 	// Text prompt(s) to guide upscaled image generation.
 	Prompt string `multipartForm:"name=prompt"`
 	// Uploaded image to modify with the pipeline.
-	Image BodyGenUpscaleImage `multipartForm:"file"`
+	Image BodyGenUpscaleImage `multipartForm:"file,name=image"`
 	// Hugging Face model ID used for upscaled image generation.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// Perform a safety check to estimate if generated images could be offensive or harmful.
