@@ -7,7 +7,7 @@ import (
 )
 
 type BodyGenSegmentAnything2Image struct {
-	FileName string `multipartForm:"name=image"`
+	FileName string `multipartForm:"name=fileName"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
@@ -28,7 +28,7 @@ func (o *BodyGenSegmentAnything2Image) GetContent() any {
 
 type BodyGenSegmentAnything2 struct {
 	// Image to segment.
-	Image BodyGenSegmentAnything2Image `multipartForm:"file"`
+	Image BodyGenSegmentAnything2Image `multipartForm:"file,name=image"`
 	// Hugging Face model ID used for image generation.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// Nx2 array of point prompts to the model, where each point is in (X,Y) in pixels.

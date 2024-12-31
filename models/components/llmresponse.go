@@ -5,6 +5,9 @@ package components
 type LLMResponse struct {
 	Response   string `json:"response"`
 	TokensUsed int64  `json:"tokens_used"`
+	ID         string `json:"id"`
+	Model      string `json:"model"`
+	Created    int64  `json:"created"`
 }
 
 func (o *LLMResponse) GetResponse() string {
@@ -19,4 +22,25 @@ func (o *LLMResponse) GetTokensUsed() int64 {
 		return 0
 	}
 	return o.TokensUsed
+}
+
+func (o *LLMResponse) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *LLMResponse) GetModel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Model
+}
+
+func (o *LLMResponse) GetCreated() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Created
 }

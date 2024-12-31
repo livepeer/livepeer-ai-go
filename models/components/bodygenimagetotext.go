@@ -7,7 +7,7 @@ import (
 )
 
 type BodyGenImageToTextImage struct {
-	FileName string `multipartForm:"name=image"`
+	FileName string `multipartForm:"name=fileName"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
@@ -28,7 +28,7 @@ func (o *BodyGenImageToTextImage) GetContent() any {
 
 type BodyGenImageToText struct {
 	// Uploaded image to transform with the pipeline.
-	Image BodyGenImageToTextImage `multipartForm:"file"`
+	Image BodyGenImageToTextImage `multipartForm:"file,name=image"`
 	// Text prompt(s) to guide transformation.
 	Prompt *string `default:"" multipartForm:"name=prompt"`
 	// Hugging Face model ID used for transformation.

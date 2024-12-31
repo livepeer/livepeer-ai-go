@@ -421,8 +421,13 @@ func main() {
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    res, err := s.Generate.Llm(ctx, components.BodyGenLLM{
-        Prompt: "<value>",
+    res, err := s.Generate.Llm(ctx, components.LLMRequest{
+        Messages: []components.LLMMessage{
+            components.LLMMessage{
+                Role: "<value>",
+                Content: "<value>",
+            },
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -438,7 +443,7 @@ func main() {
 | Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
-| `request`                                                      | [components.BodyGenLLM](../../models/components/bodygenllm.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `request`                                                      | [components.LLMRequest](../../models/components/llmrequest.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
 | `opts`                                                         | [][operations.Option](../../models/operations/option.md)       | :heavy_minus_sign:                                             | The options for this request.                                  |
 
 ### Response

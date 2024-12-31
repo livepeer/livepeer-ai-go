@@ -7,7 +7,7 @@ import (
 )
 
 type Audio struct {
-	FileName string `multipartForm:"name=audio"`
+	FileName string `multipartForm:"name=fileName"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
@@ -28,7 +28,7 @@ func (o *Audio) GetContent() any {
 
 type BodyGenAudioToText struct {
 	// Uploaded audio file to be transcribed.
-	Audio Audio `multipartForm:"file"`
+	Audio Audio `multipartForm:"file,name=audio"`
 	// Hugging Face model ID used for transcription.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// Return timestamps for the transcribed text. Supported values: 'sentence', 'word', or a string boolean ('true' or 'false'). Default is 'true' ('sentence'). 'false' means no timestamps. 'word' means word-based timestamps.

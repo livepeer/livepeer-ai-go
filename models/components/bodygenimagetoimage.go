@@ -7,7 +7,7 @@ import (
 )
 
 type Image struct {
-	FileName string `multipartForm:"name=image"`
+	FileName string `multipartForm:"name=fileName"`
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content any `multipartForm:"content"`
 }
@@ -30,7 +30,7 @@ type BodyGenImageToImage struct {
 	// Text prompt(s) to guide image generation.
 	Prompt string `multipartForm:"name=prompt"`
 	// Uploaded image to modify with the pipeline.
-	Image Image `multipartForm:"file"`
+	Image Image `multipartForm:"file,name=image"`
 	// Hugging Face model ID used for image generation.
 	ModelID *string `default:"" multipartForm:"name=model_id"`
 	// A LoRA (Low-Rank Adaptation) model and its corresponding weight for image generation. Example: { "latent-consistency/lcm-lora-sdxl": 1.0, "nerijs/pixel-art-xl": 1.2}.
