@@ -31,7 +31,16 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		Prompt: "<value>",
+		ModelID:            livepeeraigo.String(""),
+		Loras:              livepeeraigo.String(""),
+		Prompt:             "<value>",
+		Height:             livepeeraigo.Int64(576),
+		Width:              livepeeraigo.Int64(1024),
+		GuidanceScale:      livepeeraigo.Float64(7.5),
+		NegativePrompt:     livepeeraigo.String(""),
+		SafetyCheck:        livepeeraigo.Bool(true),
+		NumInferenceSteps:  livepeeraigo.Int64(50),
+		NumImagesPerPrompt: livepeeraigo.Int64(1),
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -84,7 +93,16 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		Prompt: "<value>",
+		ModelID:            livepeeraigo.String(""),
+		Loras:              livepeeraigo.String(""),
+		Prompt:             "<value>",
+		Height:             livepeeraigo.Int64(576),
+		Width:              livepeeraigo.Int64(1024),
+		GuidanceScale:      livepeeraigo.Float64(7.5),
+		NegativePrompt:     livepeeraigo.String(""),
+		SafetyCheck:        livepeeraigo.Bool(true),
+		NumInferenceSteps:  livepeeraigo.Int64(50),
+		NumImagesPerPrompt: livepeeraigo.Int64(1),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -106,11 +124,12 @@ By Default, an API error will return `sdkerrors.SDKError`. When custom error res
 
 For example, the `TextToImage` function may return the following errors:
 
-| Error Type                    | Status Code   | Content Type     |
-| ----------------------------- | ------------- | ---------------- |
-| sdkerrors.HTTPError           | 400, 401, 500 | application/json |
-| sdkerrors.HTTPValidationError | 422           | application/json |
-| sdkerrors.SDKError            | 4XX, 5XX      | \*/\*            |
+| Error Type                    | Status Code | Content Type     |
+| ----------------------------- | ----------- | ---------------- |
+| sdkerrors.HTTPError           | 400, 401    | application/json |
+| sdkerrors.HTTPValidationError | 422         | application/json |
+| sdkerrors.HTTPError           | 500         | application/json |
+| sdkerrors.SDKError            | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -134,7 +153,16 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		Prompt: "<value>",
+		ModelID:            livepeeraigo.String(""),
+		Loras:              livepeeraigo.String(""),
+		Prompt:             "<value>",
+		Height:             livepeeraigo.Int64(576),
+		Width:              livepeeraigo.Int64(1024),
+		GuidanceScale:      livepeeraigo.Float64(7.5),
+		NegativePrompt:     livepeeraigo.String(""),
+		SafetyCheck:        livepeeraigo.Bool(true),
+		NumInferenceSteps:  livepeeraigo.Int64(50),
+		NumImagesPerPrompt: livepeeraigo.Int64(1),
 	})
 	if err != nil {
 
@@ -145,6 +173,12 @@ func main() {
 		}
 
 		var e *sdkerrors.HTTPValidationError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+		var e *sdkerrors.HTTPError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -194,7 +228,16 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		Prompt: "<value>",
+		ModelID:            livepeeraigo.String(""),
+		Loras:              livepeeraigo.String(""),
+		Prompt:             "<value>",
+		Height:             livepeeraigo.Int64(576),
+		Width:              livepeeraigo.Int64(1024),
+		GuidanceScale:      livepeeraigo.Float64(7.5),
+		NegativePrompt:     livepeeraigo.String(""),
+		SafetyCheck:        livepeeraigo.Bool(true),
+		NumInferenceSteps:  livepeeraigo.Int64(50),
+		NumImagesPerPrompt: livepeeraigo.Int64(1),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -228,7 +271,16 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		Prompt: "<value>",
+		ModelID:            livepeeraigo.String(""),
+		Loras:              livepeeraigo.String(""),
+		Prompt:             "<value>",
+		Height:             livepeeraigo.Int64(576),
+		Width:              livepeeraigo.Int64(1024),
+		GuidanceScale:      livepeeraigo.Float64(7.5),
+		NegativePrompt:     livepeeraigo.String(""),
+		SafetyCheck:        livepeeraigo.Bool(true),
+		NumInferenceSteps:  livepeeraigo.Int64(50),
+		NumImagesPerPrompt: livepeeraigo.Int64(1),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -300,7 +352,16 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		Prompt: "<value>",
+		ModelID:            livepeeraigo.String(""),
+		Loras:              livepeeraigo.String(""),
+		Prompt:             "<value>",
+		Height:             livepeeraigo.Int64(576),
+		Width:              livepeeraigo.Int64(1024),
+		GuidanceScale:      livepeeraigo.Float64(7.5),
+		NegativePrompt:     livepeeraigo.String(""),
+		SafetyCheck:        livepeeraigo.Bool(true),
+		NumInferenceSteps:  livepeeraigo.Int64(50),
+		NumImagesPerPrompt: livepeeraigo.Int64(1),
 	})
 	if err != nil {
 		log.Fatal(err)
