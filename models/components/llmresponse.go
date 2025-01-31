@@ -3,25 +3,11 @@
 package components
 
 type LLMResponse struct {
-	Response   string `json:"response"`
-	TokensUsed int64  `json:"tokens_used"`
-	ID         string `json:"id"`
-	Model      string `json:"model"`
-	Created    int64  `json:"created"`
-}
-
-func (o *LLMResponse) GetResponse() string {
-	if o == nil {
-		return ""
-	}
-	return o.Response
-}
-
-func (o *LLMResponse) GetTokensUsed() int64 {
-	if o == nil {
-		return 0
-	}
-	return o.TokensUsed
+	ID      string        `json:"id"`
+	Model   string        `json:"model"`
+	Created int64         `json:"created"`
+	Usage   LLMTokenUsage `json:"usage"`
+	Choices []LLMChoice   `json:"choices"`
 }
 
 func (o *LLMResponse) GetID() string {
@@ -43,4 +29,18 @@ func (o *LLMResponse) GetCreated() int64 {
 		return 0
 	}
 	return o.Created
+}
+
+func (o *LLMResponse) GetUsage() LLMTokenUsage {
+	if o == nil {
+		return LLMTokenUsage{}
+	}
+	return o.Usage
+}
+
+func (o *LLMResponse) GetChoices() []LLMChoice {
+	if o == nil {
+		return []LLMChoice{}
+	}
+	return o.Choices
 }

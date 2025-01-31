@@ -40,7 +40,16 @@ func main() {
     )
 
     res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
+        ModelID: livepeeraigo.String(""),
+        Loras: livepeeraigo.String(""),
         Prompt: "<value>",
+        Height: livepeeraigo.Int64(576),
+        Width: livepeeraigo.Int64(1024),
+        GuidanceScale: livepeeraigo.Float64(7.5),
+        NegativePrompt: livepeeraigo.String(""),
+        SafetyCheck: livepeeraigo.Bool(true),
+        NumInferenceSteps: livepeeraigo.Int64(50),
+        NumImagesPerPrompt: livepeeraigo.Int64(1),
     })
     if err != nil {
         log.Fatal(err)
@@ -67,8 +76,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ImageToImage
@@ -107,6 +117,15 @@ func main() {
             FileName: "example.file",
             Content: content,
         },
+        ModelID: livepeeraigo.String(""),
+        Loras: livepeeraigo.String(""),
+        Strength: livepeeraigo.Float64(0.8),
+        GuidanceScale: livepeeraigo.Float64(7.5),
+        ImageGuidanceScale: livepeeraigo.Float64(1.5),
+        NegativePrompt: livepeeraigo.String(""),
+        SafetyCheck: livepeeraigo.Bool(true),
+        NumInferenceSteps: livepeeraigo.Int64(100),
+        NumImagesPerPrompt: livepeeraigo.Int64(1),
     })
     if err != nil {
         log.Fatal(err)
@@ -133,8 +152,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ImageToVideo
@@ -172,6 +192,14 @@ func main() {
             FileName: "example.file",
             Content: content,
         },
+        ModelID: livepeeraigo.String(""),
+        Height: livepeeraigo.Int64(576),
+        Width: livepeeraigo.Int64(1024),
+        Fps: livepeeraigo.Int64(6),
+        MotionBucketID: livepeeraigo.Int64(127),
+        NoiseAugStrength: livepeeraigo.Float64(0.02),
+        SafetyCheck: livepeeraigo.Bool(true),
+        NumInferenceSteps: livepeeraigo.Int64(25),
     })
     if err != nil {
         log.Fatal(err)
@@ -198,8 +226,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## Upscale
@@ -238,6 +267,9 @@ func main() {
             FileName: "example.file",
             Content: content,
         },
+        ModelID: livepeeraigo.String(""),
+        SafetyCheck: livepeeraigo.Bool(true),
+        NumInferenceSteps: livepeeraigo.Int64(75),
     })
     if err != nil {
         log.Fatal(err)
@@ -264,8 +296,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## AudioToText
@@ -303,6 +336,8 @@ func main() {
             FileName: "example.file",
             Content: content,
         },
+        ModelID: livepeeraigo.String(""),
+        ReturnTimestamps: livepeeraigo.String("true"),
     })
     if err != nil {
         log.Fatal(err)
@@ -329,8 +364,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 413, 415, 500       | application/json              |
+| sdkerrors.HTTPError           | 400, 401, 413, 415            | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## SegmentAnything2
@@ -368,6 +404,10 @@ func main() {
             FileName: "example.file",
             Content: content,
         },
+        ModelID: livepeeraigo.String(""),
+        MultimaskOutput: livepeeraigo.Bool(true),
+        ReturnLogits: livepeeraigo.Bool(true),
+        NormalizeCoords: livepeeraigo.Bool(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -394,8 +434,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## Llm
@@ -423,11 +464,14 @@ func main() {
 
     res, err := s.Generate.Llm(ctx, components.LLMRequest{
         Messages: []components.LLMMessage{
-            components.LLMMessage{
-                Role: "<value>",
-                Content: "<value>",
-            },
+
         },
+        Model: livepeeraigo.String(""),
+        Temperature: livepeeraigo.Float64(0.7),
+        MaxTokens: livepeeraigo.Int64(256),
+        TopP: livepeeraigo.Float64(1),
+        TopK: livepeeraigo.Int64(-1),
+        Stream: livepeeraigo.Bool(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -454,8 +498,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ImageToText
@@ -493,6 +538,8 @@ func main() {
             FileName: "example.file",
             Content: content,
         },
+        Prompt: livepeeraigo.String(""),
+        ModelID: livepeeraigo.String(""),
     })
     if err != nil {
         log.Fatal(err)
@@ -519,8 +566,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 413, 500            | application/json              |
+| sdkerrors.HTTPError           | 400, 401, 413                 | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## LiveVideoToVideo
@@ -549,6 +597,9 @@ func main() {
     res, err := s.Generate.LiveVideoToVideo(ctx, components.LiveVideoToVideoParams{
         SubscribeURL: "https://soulful-lava.org/",
         PublishURL: "https://vain-tabletop.biz",
+        ControlURL: livepeeraigo.String(""),
+        EventsURL: livepeeraigo.String(""),
+        ModelID: livepeeraigo.String(""),
     })
     if err != nil {
         log.Fatal(err)
@@ -575,8 +626,9 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## TextToSpeech
@@ -602,7 +654,11 @@ func main() {
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    res, err := s.Generate.TextToSpeech(ctx, components.TextToSpeechParams{})
+    res, err := s.Generate.TextToSpeech(ctx, components.TextToSpeechParams{
+        ModelID: livepeeraigo.String(""),
+        Text: livepeeraigo.String(""),
+        Description: livepeeraigo.String("A male speaker delivers a slightly expressive and animated speech with a moderate speed and pitch."),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -628,6 +684,7 @@ func main() {
 
 | Error Type                    | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.HTTPError           | 400, 401, 500                 | application/json              |
+| sdkerrors.HTTPError           | 400, 401                      | application/json              |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
+| sdkerrors.HTTPError           | 500                           | application/json              |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
