@@ -16,8 +16,8 @@ const (
 )
 
 type Loc struct {
-	Str     *string `queryParam:"inline"`
-	Integer *int64  `queryParam:"inline"`
+	Str     *string `queryParam:"inline,name=loc"`
+	Integer *int64  `queryParam:"inline,name=loc"`
 
 	Type LocType
 }
@@ -43,14 +43,14 @@ func CreateLocInteger(integer int64) Loc {
 func (u *Loc) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = LocTypeStr
 		return nil
 	}
 
 	var integer int64 = int64(0)
-	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
 		u.Integer = &integer
 		u.Type = LocTypeInteger
 		return nil
@@ -77,23 +77,23 @@ type ValidationError struct {
 	Type string `json:"type"`
 }
 
-func (o *ValidationError) GetLoc() []Loc {
-	if o == nil {
+func (v *ValidationError) GetLoc() []Loc {
+	if v == nil {
 		return []Loc{}
 	}
-	return o.Loc
+	return v.Loc
 }
 
-func (o *ValidationError) GetMsg() string {
-	if o == nil {
+func (v *ValidationError) GetMsg() string {
+	if v == nil {
 		return ""
 	}
-	return o.Msg
+	return v.Msg
 }
 
-func (o *ValidationError) GetType() string {
-	if o == nil {
+func (v *ValidationError) GetType() string {
+	if v == nil {
 		return ""
 	}
-	return o.Type
+	return v.Type
 }

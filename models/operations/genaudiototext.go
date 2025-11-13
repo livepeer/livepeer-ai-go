@@ -12,16 +12,16 @@ type GenAudioToTextResponse struct {
 	TextResponse *components.TextResponse
 }
 
-func (o *GenAudioToTextResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GenAudioToTextResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GenAudioToTextResponse) GetTextResponse() *components.TextResponse {
-	if o == nil {
+func (g *GenAudioToTextResponse) GetTextResponse() *components.TextResponse {
+	if g == nil {
 		return nil
 	}
-	return o.TextResponse
+	return g.TextResponse
 }

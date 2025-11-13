@@ -12,16 +12,16 @@ type GenLiveVideoToVideoResponse struct {
 	LiveVideoToVideoResponse *components.LiveVideoToVideoResponse
 }
 
-func (o *GenLiveVideoToVideoResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GenLiveVideoToVideoResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GenLiveVideoToVideoResponse) GetLiveVideoToVideoResponse() *components.LiveVideoToVideoResponse {
-	if o == nil {
+func (g *GenLiveVideoToVideoResponse) GetLiveVideoToVideoResponse() *components.LiveVideoToVideoResponse {
+	if g == nil {
 		return nil
 	}
-	return o.LiveVideoToVideoResponse
+	return g.LiveVideoToVideoResponse
 }

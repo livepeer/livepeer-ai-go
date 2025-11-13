@@ -8,9 +8,9 @@ type AudioResponse struct {
 	Audio MediaURL `json:"audio"`
 }
 
-func (o *AudioResponse) GetAudio() MediaURL {
-	if o == nil {
+func (a *AudioResponse) GetAudio() MediaURL {
+	if a == nil {
 		return MediaURL{}
 	}
-	return o.Audio
+	return a.Audio
 }

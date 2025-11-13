@@ -36,85 +36,85 @@ func (t TextToImageParams) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TextToImageParams) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"prompt"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *TextToImageParams) GetModelID() *string {
-	if o == nil {
+func (t *TextToImageParams) GetModelID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ModelID
+	return t.ModelID
 }
 
-func (o *TextToImageParams) GetLoras() *string {
-	if o == nil {
+func (t *TextToImageParams) GetLoras() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Loras
+	return t.Loras
 }
 
-func (o *TextToImageParams) GetPrompt() string {
-	if o == nil {
+func (t *TextToImageParams) GetPrompt() string {
+	if t == nil {
 		return ""
 	}
-	return o.Prompt
+	return t.Prompt
 }
 
-func (o *TextToImageParams) GetHeight() *int64 {
-	if o == nil {
+func (t *TextToImageParams) GetHeight() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Height
+	return t.Height
 }
 
-func (o *TextToImageParams) GetWidth() *int64 {
-	if o == nil {
+func (t *TextToImageParams) GetWidth() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Width
+	return t.Width
 }
 
-func (o *TextToImageParams) GetGuidanceScale() *float64 {
-	if o == nil {
+func (t *TextToImageParams) GetGuidanceScale() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.GuidanceScale
+	return t.GuidanceScale
 }
 
-func (o *TextToImageParams) GetNegativePrompt() *string {
-	if o == nil {
+func (t *TextToImageParams) GetNegativePrompt() *string {
+	if t == nil {
 		return nil
 	}
-	return o.NegativePrompt
+	return t.NegativePrompt
 }
 
-func (o *TextToImageParams) GetSafetyCheck() *bool {
-	if o == nil {
+func (t *TextToImageParams) GetSafetyCheck() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.SafetyCheck
+	return t.SafetyCheck
 }
 
-func (o *TextToImageParams) GetSeed() *int64 {
-	if o == nil {
+func (t *TextToImageParams) GetSeed() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Seed
+	return t.Seed
 }
 
-func (o *TextToImageParams) GetNumInferenceSteps() *int64 {
-	if o == nil {
+func (t *TextToImageParams) GetNumInferenceSteps() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.NumInferenceSteps
+	return t.NumInferenceSteps
 }
 
-func (o *TextToImageParams) GetNumImagesPerPrompt() *int64 {
-	if o == nil {
+func (t *TextToImageParams) GetNumImagesPerPrompt() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.NumImagesPerPrompt
+	return t.NumImagesPerPrompt
 }

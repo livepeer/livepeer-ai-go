@@ -18,36 +18,36 @@ func (l LLMChoice) MarshalJSON() ([]byte, error) {
 }
 
 func (l *LLMChoice) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"index"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *LLMChoice) GetIndex() int64 {
-	if o == nil {
+func (l *LLMChoice) GetIndex() int64 {
+	if l == nil {
 		return 0
 	}
-	return o.Index
+	return l.Index
 }
 
-func (o *LLMChoice) GetFinishReason() *string {
-	if o == nil {
+func (l *LLMChoice) GetFinishReason() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FinishReason
+	return l.FinishReason
 }
 
-func (o *LLMChoice) GetDelta() *LLMMessage {
-	if o == nil {
+func (l *LLMChoice) GetDelta() *LLMMessage {
+	if l == nil {
 		return nil
 	}
-	return o.Delta
+	return l.Delta
 }
 
-func (o *LLMChoice) GetMessage() *LLMMessage {
-	if o == nil {
+func (l *LLMChoice) GetMessage() *LLMMessage {
+	if l == nil {
 		return nil
 	}
-	return o.Message
+	return l.Message
 }

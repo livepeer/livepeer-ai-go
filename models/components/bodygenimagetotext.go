@@ -12,18 +12,18 @@ type BodyGenImageToTextImage struct {
 	Content any `multipartForm:"content"`
 }
 
-func (o *BodyGenImageToTextImage) GetFileName() string {
-	if o == nil {
+func (b *BodyGenImageToTextImage) GetFileName() string {
+	if b == nil {
 		return ""
 	}
-	return o.FileName
+	return b.FileName
 }
 
-func (o *BodyGenImageToTextImage) GetContent() any {
-	if o == nil {
+func (b *BodyGenImageToTextImage) GetContent() any {
+	if b == nil {
 		return nil
 	}
-	return o.Content
+	return b.Content
 }
 
 type BodyGenImageToText struct {
@@ -40,29 +40,29 @@ func (b BodyGenImageToText) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BodyGenImageToText) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"image"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyGenImageToText) GetImage() BodyGenImageToTextImage {
-	if o == nil {
+func (b *BodyGenImageToText) GetImage() BodyGenImageToTextImage {
+	if b == nil {
 		return BodyGenImageToTextImage{}
 	}
-	return o.Image
+	return b.Image
 }
 
-func (o *BodyGenImageToText) GetPrompt() *string {
-	if o == nil {
+func (b *BodyGenImageToText) GetPrompt() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Prompt
+	return b.Prompt
 }
 
-func (o *BodyGenImageToText) GetModelID() *string {
-	if o == nil {
+func (b *BodyGenImageToText) GetModelID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ModelID
+	return b.ModelID
 }

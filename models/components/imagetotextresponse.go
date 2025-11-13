@@ -8,9 +8,9 @@ type ImageToTextResponse struct {
 	Text string `json:"text"`
 }
 
-func (o *ImageToTextResponse) GetText() string {
-	if o == nil {
+func (i *ImageToTextResponse) GetText() string {
+	if i == nil {
 		return ""
 	}
-	return o.Text
+	return i.Text
 }

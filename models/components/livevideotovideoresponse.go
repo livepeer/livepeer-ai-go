@@ -16,6 +16,10 @@ type LiveVideoToVideoResponse struct {
 	ControlURL *string `default:"" json:"control_url"`
 	// URL for subscribing to events for pipeline status and logs
 	EventsURL *string `default:"" json:"events_url"`
+	// The ID generated for this request
+	RequestID *string `default:"" json:"request_id"`
+	// Orchestrator manifest ID for this request
+	ManifestID *string `default:"" json:"manifest_id"`
 }
 
 func (l LiveVideoToVideoResponse) MarshalJSON() ([]byte, error) {
@@ -23,36 +27,50 @@ func (l LiveVideoToVideoResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (l *LiveVideoToVideoResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"subscribe_url", "publish_url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *LiveVideoToVideoResponse) GetSubscribeURL() string {
-	if o == nil {
+func (l *LiveVideoToVideoResponse) GetSubscribeURL() string {
+	if l == nil {
 		return ""
 	}
-	return o.SubscribeURL
+	return l.SubscribeURL
 }
 
-func (o *LiveVideoToVideoResponse) GetPublishURL() string {
-	if o == nil {
+func (l *LiveVideoToVideoResponse) GetPublishURL() string {
+	if l == nil {
 		return ""
 	}
-	return o.PublishURL
+	return l.PublishURL
 }
 
-func (o *LiveVideoToVideoResponse) GetControlURL() *string {
-	if o == nil {
+func (l *LiveVideoToVideoResponse) GetControlURL() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ControlURL
+	return l.ControlURL
 }
 
-func (o *LiveVideoToVideoResponse) GetEventsURL() *string {
-	if o == nil {
+func (l *LiveVideoToVideoResponse) GetEventsURL() *string {
+	if l == nil {
 		return nil
 	}
-	return o.EventsURL
+	return l.EventsURL
+}
+
+func (l *LiveVideoToVideoResponse) GetRequestID() *string {
+	if l == nil {
+		return nil
+	}
+	return l.RequestID
+}
+
+func (l *LiveVideoToVideoResponse) GetManifestID() *string {
+	if l == nil {
+		return nil
+	}
+	return l.ManifestID
 }

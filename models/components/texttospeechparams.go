@@ -20,29 +20,29 @@ func (t TextToSpeechParams) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TextToSpeechParams) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *TextToSpeechParams) GetModelID() *string {
-	if o == nil {
+func (t *TextToSpeechParams) GetModelID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ModelID
+	return t.ModelID
 }
 
-func (o *TextToSpeechParams) GetText() *string {
-	if o == nil {
+func (t *TextToSpeechParams) GetText() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Text
+	return t.Text
 }
 
-func (o *TextToSpeechParams) GetDescription() *string {
-	if o == nil {
+func (t *TextToSpeechParams) GetDescription() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Description
+	return t.Description
 }

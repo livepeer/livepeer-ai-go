@@ -12,16 +12,16 @@ type GenImageToTextResponse struct {
 	ImageToTextResponse *components.ImageToTextResponse
 }
 
-func (o *GenImageToTextResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GenImageToTextResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GenImageToTextResponse) GetImageToTextResponse() *components.ImageToTextResponse {
-	if o == nil {
+func (g *GenImageToTextResponse) GetImageToTextResponse() *components.ImageToTextResponse {
+	if g == nil {
 		return nil
 	}
-	return o.ImageToTextResponse
+	return g.ImageToTextResponse
 }

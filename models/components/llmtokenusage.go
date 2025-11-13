@@ -8,23 +8,23 @@ type LLMTokenUsage struct {
 	TotalTokens      int64 `json:"total_tokens"`
 }
 
-func (o *LLMTokenUsage) GetPromptTokens() int64 {
-	if o == nil {
+func (l *LLMTokenUsage) GetPromptTokens() int64 {
+	if l == nil {
 		return 0
 	}
-	return o.PromptTokens
+	return l.PromptTokens
 }
 
-func (o *LLMTokenUsage) GetCompletionTokens() int64 {
-	if o == nil {
+func (l *LLMTokenUsage) GetCompletionTokens() int64 {
+	if l == nil {
 		return 0
 	}
-	return o.CompletionTokens
+	return l.CompletionTokens
 }
 
-func (o *LLMTokenUsage) GetTotalTokens() int64 {
-	if o == nil {
+func (l *LLMTokenUsage) GetTotalTokens() int64 {
+	if l == nil {
 		return 0
 	}
-	return o.TotalTokens
+	return l.TotalTokens
 }

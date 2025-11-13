@@ -12,18 +12,18 @@ type Audio struct {
 	Content any `multipartForm:"content"`
 }
 
-func (o *Audio) GetFileName() string {
-	if o == nil {
+func (a *Audio) GetFileName() string {
+	if a == nil {
 		return ""
 	}
-	return o.FileName
+	return a.FileName
 }
 
-func (o *Audio) GetContent() any {
-	if o == nil {
+func (a *Audio) GetContent() any {
+	if a == nil {
 		return nil
 	}
-	return o.Content
+	return a.Content
 }
 
 type BodyGenAudioToText struct {
@@ -40,29 +40,29 @@ func (b BodyGenAudioToText) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BodyGenAudioToText) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"audio"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyGenAudioToText) GetAudio() Audio {
-	if o == nil {
+func (b *BodyGenAudioToText) GetAudio() Audio {
+	if b == nil {
 		return Audio{}
 	}
-	return o.Audio
+	return b.Audio
 }
 
-func (o *BodyGenAudioToText) GetModelID() *string {
-	if o == nil {
+func (b *BodyGenAudioToText) GetModelID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ModelID
+	return b.ModelID
 }
 
-func (o *BodyGenAudioToText) GetReturnTimestamps() *string {
-	if o == nil {
+func (b *BodyGenAudioToText) GetReturnTimestamps() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ReturnTimestamps
+	return b.ReturnTimestamps
 }

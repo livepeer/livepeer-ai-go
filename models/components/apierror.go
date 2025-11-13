@@ -8,9 +8,9 @@ type APIError struct {
 	Msg string `json:"msg"`
 }
 
-func (o *APIError) GetMsg() string {
-	if o == nil {
+func (a *APIError) GetMsg() string {
+	if a == nil {
 		return ""
 	}
-	return o.Msg
+	return a.Msg
 }

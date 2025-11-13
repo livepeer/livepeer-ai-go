@@ -12,16 +12,16 @@ type GenLLMResponse struct {
 	LLMResponse *components.LLMResponse
 }
 
-func (o *GenLLMResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GenLLMResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GenLLMResponse) GetLLMResponse() *components.LLMResponse {
-	if o == nil {
+func (g *GenLLMResponse) GetLLMResponse() *components.LLMResponse {
+	if g == nil {
 		return nil
 	}
-	return o.LLMResponse
+	return g.LLMResponse
 }

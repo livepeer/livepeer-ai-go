@@ -21,57 +21,57 @@ func (l LLMRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (l *LLMRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"messages"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *LLMRequest) GetMessages() []LLMMessage {
-	if o == nil {
+func (l *LLMRequest) GetMessages() []LLMMessage {
+	if l == nil {
 		return []LLMMessage{}
 	}
-	return o.Messages
+	return l.Messages
 }
 
-func (o *LLMRequest) GetModel() *string {
-	if o == nil {
+func (l *LLMRequest) GetModel() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Model
+	return l.Model
 }
 
-func (o *LLMRequest) GetTemperature() *float64 {
-	if o == nil {
+func (l *LLMRequest) GetTemperature() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Temperature
+	return l.Temperature
 }
 
-func (o *LLMRequest) GetMaxTokens() *int64 {
-	if o == nil {
+func (l *LLMRequest) GetMaxTokens() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.MaxTokens
+	return l.MaxTokens
 }
 
-func (o *LLMRequest) GetTopP() *float64 {
-	if o == nil {
+func (l *LLMRequest) GetTopP() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.TopP
+	return l.TopP
 }
 
-func (o *LLMRequest) GetTopK() *int64 {
-	if o == nil {
+func (l *LLMRequest) GetTopK() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.TopK
+	return l.TopK
 }
 
-func (o *LLMRequest) GetStream() *bool {
-	if o == nil {
+func (l *LLMRequest) GetStream() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Stream
+	return l.Stream
 }

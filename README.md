@@ -31,16 +31,7 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		ModelID:            livepeeraigo.String(""),
-		Loras:              livepeeraigo.String(""),
-		Prompt:             "<value>",
-		Height:             livepeeraigo.Int64(576),
-		Width:              livepeeraigo.Int64(1024),
-		GuidanceScale:      livepeeraigo.Float64(7.5),
-		NegativePrompt:     livepeeraigo.String(""),
-		SafetyCheck:        livepeeraigo.Bool(true),
-		NumInferenceSteps:  livepeeraigo.Int64(50),
-		NumImagesPerPrompt: livepeeraigo.Int64(1),
+		Prompt: "<value>",
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -93,16 +84,7 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		ModelID:            livepeeraigo.String(""),
-		Loras:              livepeeraigo.String(""),
-		Prompt:             "<value>",
-		Height:             livepeeraigo.Int64(576),
-		Width:              livepeeraigo.Int64(1024),
-		GuidanceScale:      livepeeraigo.Float64(7.5),
-		NegativePrompt:     livepeeraigo.String(""),
-		SafetyCheck:        livepeeraigo.Bool(true),
-		NumInferenceSteps:  livepeeraigo.Int64(50),
-		NumImagesPerPrompt: livepeeraigo.Int64(1),
+		Prompt: "<value>",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -153,16 +135,7 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		ModelID:            livepeeraigo.String(""),
-		Loras:              livepeeraigo.String(""),
-		Prompt:             "<value>",
-		Height:             livepeeraigo.Int64(576),
-		Width:              livepeeraigo.Int64(1024),
-		GuidanceScale:      livepeeraigo.Float64(7.5),
-		NegativePrompt:     livepeeraigo.String(""),
-		SafetyCheck:        livepeeraigo.Bool(true),
-		NumInferenceSteps:  livepeeraigo.Int64(50),
-		NumImagesPerPrompt: livepeeraigo.Int64(1),
+		Prompt: "<value>",
 	})
 	if err != nil {
 
@@ -202,10 +175,10 @@ func main() {
 
 You can override the default server globally using the `WithServerIndex(serverIndex int)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                                      |
-| --- | ------------------------------------------- |
-| 0   | `https://dream-gateway.livepeer.cloud`      |
-| 1   | `https://livepeer.studio/api/beta/generate` |
+| #   | Server                                      | Description                      |
+| --- | ------------------------------------------- | -------------------------------- |
+| 0   | `https://dream-gateway.livepeer.cloud`      | Livepeer Cloud Community Gateway |
+| 1   | `https://livepeer.studio/api/beta/generate` | Livepeer Studio Gateway          |
 
 #### Example
 
@@ -223,21 +196,12 @@ func main() {
 	ctx := context.Background()
 
 	s := livepeeraigo.New(
-		livepeeraigo.WithServerIndex(1),
+		livepeeraigo.WithServerIndex(0),
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		ModelID:            livepeeraigo.String(""),
-		Loras:              livepeeraigo.String(""),
-		Prompt:             "<value>",
-		Height:             livepeeraigo.Int64(576),
-		Width:              livepeeraigo.Int64(1024),
-		GuidanceScale:      livepeeraigo.Float64(7.5),
-		NegativePrompt:     livepeeraigo.String(""),
-		SafetyCheck:        livepeeraigo.Bool(true),
-		NumInferenceSteps:  livepeeraigo.Int64(50),
-		NumImagesPerPrompt: livepeeraigo.Int64(1),
+		Prompt: "<value>",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -266,21 +230,12 @@ func main() {
 	ctx := context.Background()
 
 	s := livepeeraigo.New(
-		livepeeraigo.WithServerURL("https://dream-gateway.livepeer.cloud"),
+		livepeeraigo.WithServerURL("https://livepeer.studio/api/beta/generate"),
 		livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		ModelID:            livepeeraigo.String(""),
-		Loras:              livepeeraigo.String(""),
-		Prompt:             "<value>",
-		Height:             livepeeraigo.Int64(576),
-		Width:              livepeeraigo.Int64(1024),
-		GuidanceScale:      livepeeraigo.Float64(7.5),
-		NegativePrompt:     livepeeraigo.String(""),
-		SafetyCheck:        livepeeraigo.Bool(true),
-		NumInferenceSteps:  livepeeraigo.Int64(50),
-		NumImagesPerPrompt: livepeeraigo.Int64(1),
+		Prompt: "<value>",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -310,12 +265,13 @@ The built-in `net/http` client satisfies this interface and a default client bas
 import (
 	"net/http"
 	"time"
-	"github.com/myorg/your-go-sdk"
+
+	"github.com/livepeer/livepeer-ai-go"
 )
 
 var (
 	httpClient = &http.Client{Timeout: 30 * time.Second}
-	sdkClient  = sdk.New(sdk.WithClient(httpClient))
+	sdkClient  = livepeeraigo.New(livepeeraigo.WithClient(httpClient))
 )
 ```
 
@@ -352,16 +308,7 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		ModelID:            livepeeraigo.String(""),
-		Loras:              livepeeraigo.String(""),
-		Prompt:             "<value>",
-		Height:             livepeeraigo.Int64(576),
-		Width:              livepeeraigo.Int64(1024),
-		GuidanceScale:      livepeeraigo.Float64(7.5),
-		NegativePrompt:     livepeeraigo.String(""),
-		SafetyCheck:        livepeeraigo.Bool(true),
-		NumInferenceSteps:  livepeeraigo.Int64(50),
-		NumImagesPerPrompt: livepeeraigo.Int64(1),
+		Prompt: "<value>",
 	})
 	if err != nil {
 		log.Fatal(err)

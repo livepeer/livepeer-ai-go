@@ -23,6 +23,12 @@ type LiveVideoToVideoParams struct {
 	ModelID *string `default:"" json:"model_id"`
 	// Initial parameters for the pipeline.
 	Params *Params `json:"params,omitempty"`
+	// The ID of the Gateway request (for logging purposes).
+	GatewayRequestID *string `default:"" json:"gateway_request_id"`
+	// The manifest ID from the orchestrator (for logging purposes).
+	ManifestID *string `default:"" json:"manifest_id"`
+	// The Stream ID (for logging purposes).
+	StreamID *string `default:"" json:"stream_id"`
 }
 
 func (l LiveVideoToVideoParams) MarshalJSON() ([]byte, error) {
@@ -30,50 +36,71 @@ func (l LiveVideoToVideoParams) MarshalJSON() ([]byte, error) {
 }
 
 func (l *LiveVideoToVideoParams) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"subscribe_url", "publish_url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *LiveVideoToVideoParams) GetSubscribeURL() string {
-	if o == nil {
+func (l *LiveVideoToVideoParams) GetSubscribeURL() string {
+	if l == nil {
 		return ""
 	}
-	return o.SubscribeURL
+	return l.SubscribeURL
 }
 
-func (o *LiveVideoToVideoParams) GetPublishURL() string {
-	if o == nil {
+func (l *LiveVideoToVideoParams) GetPublishURL() string {
+	if l == nil {
 		return ""
 	}
-	return o.PublishURL
+	return l.PublishURL
 }
 
-func (o *LiveVideoToVideoParams) GetControlURL() *string {
-	if o == nil {
+func (l *LiveVideoToVideoParams) GetControlURL() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ControlURL
+	return l.ControlURL
 }
 
-func (o *LiveVideoToVideoParams) GetEventsURL() *string {
-	if o == nil {
+func (l *LiveVideoToVideoParams) GetEventsURL() *string {
+	if l == nil {
 		return nil
 	}
-	return o.EventsURL
+	return l.EventsURL
 }
 
-func (o *LiveVideoToVideoParams) GetModelID() *string {
-	if o == nil {
+func (l *LiveVideoToVideoParams) GetModelID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ModelID
+	return l.ModelID
 }
 
-func (o *LiveVideoToVideoParams) GetParams() *Params {
-	if o == nil {
+func (l *LiveVideoToVideoParams) GetParams() *Params {
+	if l == nil {
 		return nil
 	}
-	return o.Params
+	return l.Params
+}
+
+func (l *LiveVideoToVideoParams) GetGatewayRequestID() *string {
+	if l == nil {
+		return nil
+	}
+	return l.GatewayRequestID
+}
+
+func (l *LiveVideoToVideoParams) GetManifestID() *string {
+	if l == nil {
+		return nil
+	}
+	return l.ManifestID
+}
+
+func (l *LiveVideoToVideoParams) GetStreamID() *string {
+	if l == nil {
+		return nil
+	}
+	return l.StreamID
 }

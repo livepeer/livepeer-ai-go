@@ -17,16 +17,7 @@ func main() {
 	)
 
 	res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-		ModelID:            livepeeraigo.String(""),
-		Loras:              livepeeraigo.String(""),
-		Prompt:             "<value>",
-		Height:             livepeeraigo.Int64(576),
-		Width:              livepeeraigo.Int64(1024),
-		GuidanceScale:      livepeeraigo.Float64(7.5),
-		NegativePrompt:     livepeeraigo.String(""),
-		SafetyCheck:        livepeeraigo.Bool(true),
-		NumInferenceSteps:  livepeeraigo.Int64(50),
-		NumImagesPerPrompt: livepeeraigo.Int64(1),
+		Prompt: "<value>",
 	})
 	if err != nil {
 		log.Fatal(err)

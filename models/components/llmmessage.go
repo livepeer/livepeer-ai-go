@@ -7,16 +7,16 @@ type LLMMessage struct {
 	Content string `json:"content"`
 }
 
-func (o *LLMMessage) GetRole() string {
-	if o == nil {
+func (l *LLMMessage) GetRole() string {
+	if l == nil {
 		return ""
 	}
-	return o.Role
+	return l.Role
 }
 
-func (o *LLMMessage) GetContent() string {
-	if o == nil {
+func (l *LLMMessage) GetContent() string {
+	if l == nil {
 		return ""
 	}
-	return o.Content
+	return l.Content
 }

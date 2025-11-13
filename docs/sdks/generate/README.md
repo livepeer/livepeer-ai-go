@@ -22,6 +22,7 @@ Generate images from text prompts.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genTextToImage" method="post" path="/text-to-image" -->
 ```go
 package main
 
@@ -34,22 +35,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
     res, err := s.Generate.TextToImage(ctx, components.TextToImageParams{
-        ModelID: livepeeraigo.String(""),
-        Loras: livepeeraigo.String(""),
         Prompt: "<value>",
-        Height: livepeeraigo.Int64(576),
-        Width: livepeeraigo.Int64(1024),
-        GuidanceScale: livepeeraigo.Float64(7.5),
-        NegativePrompt: livepeeraigo.String(""),
-        SafetyCheck: livepeeraigo.Bool(true),
-        NumInferenceSteps: livepeeraigo.Int64(50),
-        NumImagesPerPrompt: livepeeraigo.Int64(1),
     })
     if err != nil {
         log.Fatal(err)
@@ -87,6 +79,7 @@ Apply image transformations to a provided image.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genImageToImage" method="post" path="/image-to-image" -->
 ```go
 package main
 
@@ -100,32 +93,22 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
-
 
     res, err := s.Generate.ImageToImage(ctx, components.BodyGenImageToImage{
         Prompt: "<value>",
         Image: components.Image{
             FileName: "example.file",
-            Content: content,
+            Content: example,
         },
-        ModelID: livepeeraigo.String(""),
-        Loras: livepeeraigo.String(""),
-        Strength: livepeeraigo.Float64(0.8),
-        GuidanceScale: livepeeraigo.Float64(7.5),
-        ImageGuidanceScale: livepeeraigo.Float64(1.5),
-        NegativePrompt: livepeeraigo.String(""),
-        SafetyCheck: livepeeraigo.Bool(true),
-        NumInferenceSteps: livepeeraigo.Int64(100),
-        NumImagesPerPrompt: livepeeraigo.Int64(1),
     })
     if err != nil {
         log.Fatal(err)
@@ -163,6 +146,7 @@ Generate a video from a provided image.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genImageToVideo" method="post" path="/image-to-video" -->
 ```go
 package main
 
@@ -176,30 +160,21 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Generate.ImageToVideo(ctx, components.BodyGenImageToVideo{
         Image: components.BodyGenImageToVideoImage{
             FileName: "example.file",
-            Content: content,
+            Content: example,
         },
-        ModelID: livepeeraigo.String(""),
-        Height: livepeeraigo.Int64(576),
-        Width: livepeeraigo.Int64(1024),
-        Fps: livepeeraigo.Int64(6),
-        MotionBucketID: livepeeraigo.Int64(127),
-        NoiseAugStrength: livepeeraigo.Float64(0.02),
-        SafetyCheck: livepeeraigo.Bool(true),
-        NumInferenceSteps: livepeeraigo.Int64(25),
     })
     if err != nil {
         log.Fatal(err)
@@ -237,6 +212,7 @@ Upscale an image by increasing its resolution.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genUpscale" method="post" path="/upscale" -->
 ```go
 package main
 
@@ -250,26 +226,22 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
-
 
     res, err := s.Generate.Upscale(ctx, components.BodyGenUpscale{
         Prompt: "<value>",
         Image: components.BodyGenUpscaleImage{
             FileName: "example.file",
-            Content: content,
+            Content: example,
         },
-        ModelID: livepeeraigo.String(""),
-        SafetyCheck: livepeeraigo.Bool(true),
-        NumInferenceSteps: livepeeraigo.Int64(75),
     })
     if err != nil {
         log.Fatal(err)
@@ -307,6 +279,7 @@ Transcribe audio files to text.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genAudioToText" method="post" path="/audio-to-text" -->
 ```go
 package main
 
@@ -320,24 +293,21 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Generate.AudioToText(ctx, components.BodyGenAudioToText{
         Audio: components.Audio{
             FileName: "example.file",
-            Content: content,
+            Content: example,
         },
-        ModelID: livepeeraigo.String(""),
-        ReturnTimestamps: livepeeraigo.String("true"),
     })
     if err != nil {
         log.Fatal(err)
@@ -375,6 +345,7 @@ Segment objects in an image.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genSegmentAnything2" method="post" path="/segment-anything-2" -->
 ```go
 package main
 
@@ -388,26 +359,21 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Generate.SegmentAnything2(ctx, components.BodyGenSegmentAnything2{
         Image: components.BodyGenSegmentAnything2Image{
             FileName: "example.file",
-            Content: content,
+            Content: example,
         },
-        ModelID: livepeeraigo.String(""),
-        MultimaskOutput: livepeeraigo.Bool(true),
-        ReturnLogits: livepeeraigo.Bool(true),
-        NormalizeCoords: livepeeraigo.Bool(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -445,6 +411,7 @@ Generate text using a language model.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genLLM" method="post" path="/llm" -->
 ```go
 package main
 
@@ -457,21 +424,18 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
     res, err := s.Generate.Llm(ctx, components.LLMRequest{
         Messages: []components.LLMMessage{
-
+            components.LLMMessage{
+                Role: "<value>",
+                Content: "<value>",
+            },
         },
-        Model: livepeeraigo.String(""),
-        Temperature: livepeeraigo.Float64(0.7),
-        MaxTokens: livepeeraigo.Int64(256),
-        TopP: livepeeraigo.Float64(1),
-        TopK: livepeeraigo.Int64(-1),
-        Stream: livepeeraigo.Bool(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -509,6 +473,7 @@ Transform image files to text.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genImageToText" method="post" path="/image-to-text" -->
 ```go
 package main
 
@@ -522,24 +487,21 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Generate.ImageToText(ctx, components.BodyGenImageToText{
         Image: components.BodyGenImageToTextImage{
             FileName: "example.file",
-            Content: content,
+            Content: example,
         },
-        Prompt: livepeeraigo.String(""),
-        ModelID: livepeeraigo.String(""),
     })
     if err != nil {
         log.Fatal(err)
@@ -577,6 +539,7 @@ Apply transformations to a live video streamed to the returned endpoints.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genLiveVideoToVideo" method="post" path="/live-video-to-video" -->
 ```go
 package main
 
@@ -589,17 +552,14 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
     res, err := s.Generate.LiveVideoToVideo(ctx, components.LiveVideoToVideoParams{
-        SubscribeURL: "https://soulful-lava.org/",
-        PublishURL: "https://vain-tabletop.biz",
-        ControlURL: livepeeraigo.String(""),
-        EventsURL: livepeeraigo.String(""),
-        ModelID: livepeeraigo.String(""),
+        SubscribeURL: "https://soulful-finding.biz",
+        PublishURL: "https://monumental-representation.biz/",
     })
     if err != nil {
         log.Fatal(err)
@@ -637,6 +597,7 @@ Generate a text-to-speech audio file based on the provided text input and speake
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="genTextToSpeech" method="post" path="/text-to-speech" -->
 ```go
 package main
 
@@ -649,16 +610,12 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := livepeeraigo.New(
         livepeeraigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    res, err := s.Generate.TextToSpeech(ctx, components.TextToSpeechParams{
-        ModelID: livepeeraigo.String(""),
-        Text: livepeeraigo.String(""),
-        Description: livepeeraigo.String("A male speaker delivers a slightly expressive and animated speech with a moderate speed and pitch."),
-    })
+    res, err := s.Generate.TextToSpeech(ctx, components.TextToSpeechParams{})
     if err != nil {
         log.Fatal(err)
     }

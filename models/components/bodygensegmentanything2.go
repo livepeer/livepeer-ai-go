@@ -12,18 +12,18 @@ type BodyGenSegmentAnything2Image struct {
 	Content any `multipartForm:"content"`
 }
 
-func (o *BodyGenSegmentAnything2Image) GetFileName() string {
-	if o == nil {
+func (b *BodyGenSegmentAnything2Image) GetFileName() string {
+	if b == nil {
 		return ""
 	}
-	return o.FileName
+	return b.FileName
 }
 
-func (o *BodyGenSegmentAnything2Image) GetContent() any {
-	if o == nil {
+func (b *BodyGenSegmentAnything2Image) GetContent() any {
+	if b == nil {
 		return nil
 	}
-	return o.Content
+	return b.Content
 }
 
 type BodyGenSegmentAnything2 struct {
@@ -52,71 +52,71 @@ func (b BodyGenSegmentAnything2) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BodyGenSegmentAnything2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"image"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyGenSegmentAnything2) GetImage() BodyGenSegmentAnything2Image {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetImage() BodyGenSegmentAnything2Image {
+	if b == nil {
 		return BodyGenSegmentAnything2Image{}
 	}
-	return o.Image
+	return b.Image
 }
 
-func (o *BodyGenSegmentAnything2) GetModelID() *string {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetModelID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ModelID
+	return b.ModelID
 }
 
-func (o *BodyGenSegmentAnything2) GetPointCoords() *string {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetPointCoords() *string {
+	if b == nil {
 		return nil
 	}
-	return o.PointCoords
+	return b.PointCoords
 }
 
-func (o *BodyGenSegmentAnything2) GetPointLabels() *string {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetPointLabels() *string {
+	if b == nil {
 		return nil
 	}
-	return o.PointLabels
+	return b.PointLabels
 }
 
-func (o *BodyGenSegmentAnything2) GetBox() *string {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetBox() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Box
+	return b.Box
 }
 
-func (o *BodyGenSegmentAnything2) GetMaskInput() *string {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetMaskInput() *string {
+	if b == nil {
 		return nil
 	}
-	return o.MaskInput
+	return b.MaskInput
 }
 
-func (o *BodyGenSegmentAnything2) GetMultimaskOutput() *bool {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetMultimaskOutput() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.MultimaskOutput
+	return b.MultimaskOutput
 }
 
-func (o *BodyGenSegmentAnything2) GetReturnLogits() *bool {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetReturnLogits() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.ReturnLogits
+	return b.ReturnLogits
 }
 
-func (o *BodyGenSegmentAnything2) GetNormalizeCoords() *bool {
-	if o == nil {
+func (b *BodyGenSegmentAnything2) GetNormalizeCoords() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.NormalizeCoords
+	return b.NormalizeCoords
 }

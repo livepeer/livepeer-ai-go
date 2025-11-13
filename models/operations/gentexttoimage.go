@@ -12,16 +12,16 @@ type GenTextToImageResponse struct {
 	ImageResponse *components.ImageResponse
 }
 
-func (o *GenTextToImageResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GenTextToImageResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GenTextToImageResponse) GetImageResponse() *components.ImageResponse {
-	if o == nil {
+func (g *GenTextToImageResponse) GetImageResponse() *components.ImageResponse {
+	if g == nil {
 		return nil
 	}
-	return o.ImageResponse
+	return g.ImageResponse
 }

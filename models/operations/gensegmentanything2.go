@@ -12,16 +12,16 @@ type GenSegmentAnything2Response struct {
 	MasksResponse *components.MasksResponse
 }
 
-func (o *GenSegmentAnything2Response) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GenSegmentAnything2Response) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GenSegmentAnything2Response) GetMasksResponse() *components.MasksResponse {
-	if o == nil {
+func (g *GenSegmentAnything2Response) GetMasksResponse() *components.MasksResponse {
+	if g == nil {
 		return nil
 	}
-	return o.MasksResponse
+	return g.MasksResponse
 }

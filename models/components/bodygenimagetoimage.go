@@ -12,18 +12,18 @@ type Image struct {
 	Content any `multipartForm:"content"`
 }
 
-func (o *Image) GetFileName() string {
-	if o == nil {
+func (i *Image) GetFileName() string {
+	if i == nil {
 		return ""
 	}
-	return o.FileName
+	return i.FileName
 }
 
-func (o *Image) GetContent() any {
-	if o == nil {
+func (i *Image) GetContent() any {
+	if i == nil {
 		return nil
 	}
-	return o.Content
+	return i.Content
 }
 
 type BodyGenImageToImage struct {
@@ -58,92 +58,92 @@ func (b BodyGenImageToImage) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BodyGenImageToImage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"prompt", "image"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *BodyGenImageToImage) GetPrompt() string {
-	if o == nil {
+func (b *BodyGenImageToImage) GetPrompt() string {
+	if b == nil {
 		return ""
 	}
-	return o.Prompt
+	return b.Prompt
 }
 
-func (o *BodyGenImageToImage) GetImage() Image {
-	if o == nil {
+func (b *BodyGenImageToImage) GetImage() Image {
+	if b == nil {
 		return Image{}
 	}
-	return o.Image
+	return b.Image
 }
 
-func (o *BodyGenImageToImage) GetModelID() *string {
-	if o == nil {
+func (b *BodyGenImageToImage) GetModelID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ModelID
+	return b.ModelID
 }
 
-func (o *BodyGenImageToImage) GetLoras() *string {
-	if o == nil {
+func (b *BodyGenImageToImage) GetLoras() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Loras
+	return b.Loras
 }
 
-func (o *BodyGenImageToImage) GetStrength() *float64 {
-	if o == nil {
+func (b *BodyGenImageToImage) GetStrength() *float64 {
+	if b == nil {
 		return nil
 	}
-	return o.Strength
+	return b.Strength
 }
 
-func (o *BodyGenImageToImage) GetGuidanceScale() *float64 {
-	if o == nil {
+func (b *BodyGenImageToImage) GetGuidanceScale() *float64 {
+	if b == nil {
 		return nil
 	}
-	return o.GuidanceScale
+	return b.GuidanceScale
 }
 
-func (o *BodyGenImageToImage) GetImageGuidanceScale() *float64 {
-	if o == nil {
+func (b *BodyGenImageToImage) GetImageGuidanceScale() *float64 {
+	if b == nil {
 		return nil
 	}
-	return o.ImageGuidanceScale
+	return b.ImageGuidanceScale
 }
 
-func (o *BodyGenImageToImage) GetNegativePrompt() *string {
-	if o == nil {
+func (b *BodyGenImageToImage) GetNegativePrompt() *string {
+	if b == nil {
 		return nil
 	}
-	return o.NegativePrompt
+	return b.NegativePrompt
 }
 
-func (o *BodyGenImageToImage) GetSafetyCheck() *bool {
-	if o == nil {
+func (b *BodyGenImageToImage) GetSafetyCheck() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.SafetyCheck
+	return b.SafetyCheck
 }
 
-func (o *BodyGenImageToImage) GetSeed() *int64 {
-	if o == nil {
+func (b *BodyGenImageToImage) GetSeed() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.Seed
+	return b.Seed
 }
 
-func (o *BodyGenImageToImage) GetNumInferenceSteps() *int64 {
-	if o == nil {
+func (b *BodyGenImageToImage) GetNumInferenceSteps() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.NumInferenceSteps
+	return b.NumInferenceSteps
 }
 
-func (o *BodyGenImageToImage) GetNumImagesPerPrompt() *int64 {
-	if o == nil {
+func (b *BodyGenImageToImage) GetNumImagesPerPrompt() *int64 {
+	if b == nil {
 		return nil
 	}
-	return o.NumImagesPerPrompt
+	return b.NumImagesPerPrompt
 }

@@ -8,9 +8,9 @@ type MediaURL struct {
 	URL string `json:"url"`
 }
 
-func (o *MediaURL) GetURL() string {
-	if o == nil {
+func (m *MediaURL) GetURL() string {
+	if m == nil {
 		return ""
 	}
-	return o.URL
+	return m.URL
 }

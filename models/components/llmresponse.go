@@ -10,37 +10,37 @@ type LLMResponse struct {
 	Choices []LLMChoice   `json:"choices"`
 }
 
-func (o *LLMResponse) GetID() string {
-	if o == nil {
+func (l *LLMResponse) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *LLMResponse) GetModel() string {
-	if o == nil {
+func (l *LLMResponse) GetModel() string {
+	if l == nil {
 		return ""
 	}
-	return o.Model
+	return l.Model
 }
 
-func (o *LLMResponse) GetCreated() int64 {
-	if o == nil {
+func (l *LLMResponse) GetCreated() int64 {
+	if l == nil {
 		return 0
 	}
-	return o.Created
+	return l.Created
 }
 
-func (o *LLMResponse) GetUsage() LLMTokenUsage {
-	if o == nil {
+func (l *LLMResponse) GetUsage() LLMTokenUsage {
+	if l == nil {
 		return LLMTokenUsage{}
 	}
-	return o.Usage
+	return l.Usage
 }
 
-func (o *LLMResponse) GetChoices() []LLMChoice {
-	if o == nil {
+func (l *LLMResponse) GetChoices() []LLMChoice {
+	if l == nil {
 		return []LLMChoice{}
 	}
-	return o.Choices
+	return l.Choices
 }
